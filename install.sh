@@ -15,6 +15,7 @@ done
 
 # zsh
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+tourch $HOME/.zshrc.local
 
 if [ "$(uname)" == 'Darwin' ]; then
     # homebrew
@@ -27,8 +28,8 @@ if [ "$(uname)" == 'Darwin' ]; then
 elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
     # linuxbrew
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
-    test -d ~/.linuxbrew && echo "export PATH=$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH" >> ~/.zshrc
-    test -d /home/linuxbrew/.linuxbrew && echo "export PATH=/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH" >> ~/zshrc
+    test -d ~/.linuxbrew && echo "export PATH=$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH" >> ~/.zshrc.local
+    test -d /home/linuxbrew/.linuxbrew && echo "export PATH=/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH" >> ~/zshrc.local
     # install emacs
     brew install emacs
 fi
@@ -39,5 +40,3 @@ brew install \
      ag \
      aspell \
      cmigemo
-
-tourch $HOME/.zshrc.local
