@@ -60,5 +60,5 @@ alias o='open ./'
 alias gs='git status'
 alias rebuild='cd ..;rm -rf build; mkdir build; cd build; cmake ..; make'
 
-
 # add customer alias
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local

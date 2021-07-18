@@ -27,11 +27,8 @@ if [ "$(uname)" == 'Darwin' ]; then
 elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
     # linuxbrew
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
-    test -d ~/.linuxbrew && PATH="$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH"
-    test -d /home/linuxbrew/.linuxbrew && PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
-    test -r ~/.zsh_profile && echo "export PATH='$(brew --prefix)/bin:$(brew --prefix)/sbin'":'"$PATH"' >>~/.zsh_profile
-    echo "export PATH='$(brew --prefix)/bin:$(brew --prefix)/sbin'":'"$PATH"' >>~/.profile
-
+    test -d ~/.linuxbrew && echo "export PATH=$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH" >> ~/.zshrc
+    test -d /home/linuxbrew/.linuxbrew && echo "export PATH=/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH" >> ~/zshrc
     # install emacs
     brew install emacs
 fi
@@ -43,4 +40,4 @@ brew install \
      aspell \
      cmigemo
 
-source $HOME/.zshrc
+tourch $HOME/.zshrc.local
