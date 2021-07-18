@@ -9,7 +9,7 @@ do
     [[ "$f" == ".gitmodules" ]] && continue
     [[ "$f" == ".DS_Store" ]] && continue
 
-    ln -s "$f" $HOME/$f
+    ln -s `dirname $0`/$f $HOME/$f
 done
 
 # zsh
