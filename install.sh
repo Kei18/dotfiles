@@ -1,5 +1,6 @@
 #!/bin/bash
 set -u
+SCRIPT_DIR=$(cd $(dirname $0); pwd)
 
 # deploy
 for f in .??*
@@ -9,7 +10,7 @@ do
     [[ "$f" == ".gitmodules" ]] && continue
     [[ "$f" == ".DS_Store" ]] && continue
 
-    ln -s `dirname $0`/$f $HOME/$f
+    ln -s $SCRIPT_DIR/$f $HOME/$f
 done
 
 # zsh
