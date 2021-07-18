@@ -21,3 +21,5 @@ if (( $+commands[fortune] )); then
         print
     fi
 fi
+
+echo -e "`figlet -f 5lineoblique Hello Kei18`" | lolcat

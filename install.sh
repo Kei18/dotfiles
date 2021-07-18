@@ -15,7 +15,7 @@ done
 
 # zsh
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-tourch $HOME/.zshrc.local
+touch $HOME/.zshrc.local
 
 if [ "$(uname)" == 'Darwin' ]; then
     # homebrew
@@ -34,9 +34,11 @@ elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
     brew install emacs
 fi
 
-# brew install
+# brew install, common
 brew install \
      tmux \
      ag \
      aspell \
-     cmigemo
+     cmigemo \
+     figlet \
+     lolcat
