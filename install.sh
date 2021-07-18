@@ -6,16 +6,14 @@ for f in .??*
 do
     [[ "$f" == ".git" ]] && continue
     [[ "$f" == ".gitignore" ]] && continue
+    [[ "$f" == ".gitmodules" ]] && continue
     [[ "$f" == ".DS_Store" ]] && continue
 
     ln -s "$f" $HOME/$f
 done
 
 # zsh
-git clone --recursive https://github.com/sorin-ionescu/prezto.git "{ZDOTDIR:-$HOME}/.zprezto"
-
-# emacs
-git clone https://github.com/Kei18/spacemacs $HOME/.emacs.d
+git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 
 if [ "$(uname)" == 'Darwin' ]; then
     # homebrew
@@ -43,3 +41,5 @@ brew install \
      ag \
      aspell \
      cmigemo
+
+source $HOME/.zshrc

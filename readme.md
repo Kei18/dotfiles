@@ -8,7 +8,7 @@ chsh -s $(which zsh)
 
 Install:
 ```sh
-git clone https://github.com/Kei18/dotfiles $HOME/dotfiles
+git clone --recursive https://github.com/Kei18/dotfiles $HOME/dotfiles
 cd dotfiles
 bash ./install.sh
 ```
