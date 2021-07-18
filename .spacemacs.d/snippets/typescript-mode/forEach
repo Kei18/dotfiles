@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name:forEach
+# key:forEach
+# --
+forEach( $1 => { $2 });

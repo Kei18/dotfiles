@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name:class
+# key:cls
+# --
+class $1:
+      """
+      """
+
+      def __init__(self):
+          $2
