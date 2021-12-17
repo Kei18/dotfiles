@@ -37,6 +37,7 @@ fi
 # brew install, common
 brew install \
      tmux \
+     htop \
      ag \
      aspell \
      cmigemo \
