@@ -35,7 +35,8 @@ values."
    ;; <M-m f e R> (Emacs style) to install them.
    ;; ----------------------------------------------------------------
    dotspacemacs-configuration-layers
-   '(yaml
+   '(react
+     yaml
      csv
      typescript
      c-c++
@@ -69,6 +70,7 @@ values."
      yafolding
      all-the-icons-dired
      git-gutter
+     julia-mode
      flyspell-correct
      migemo
      doom-themes
@@ -453,6 +455,8 @@ you should place your code here."
   (evil-define-key 'normal dired-mode-map "[" 'backward-page)
   (evil-define-key 'normal dired-mode-map "]" 'forward-page)
   (evil-define-key 'normal dired-mode-map "g" 'revert-buffer)
+  (evil-define-key 'normal dired-mode-map "n" 'next-line)
+  (evil-define-key 'normal dired-mode-map "j" 'cua-set-mark)
 
   (bind-keys :map evil-normal-state-map ("DEL" . delete-region))
 
@@ -490,7 +494,7 @@ you should place your code here."
   (define-key yafolding-mode-map (kbd "<C-S-return>") nil)
   (define-key yafolding-mode-map (kbd "<C-M-return>") nil)
   (define-key yafolding-mode-map (kbd "<C-return>") nil)
-  (key-chord-define-global "ff" 'yafolding-toggle-element)
+  (key-chord-define-global "zz" 'yafolding-toggle-element)
   (add-hook 'prog-mode-hook 'yafolding-mode)
 
   ;; =================================================
@@ -586,7 +590,7 @@ you should place your code here."
   (add-hook 'python-mode-hook 'highlight-indentation-mode)
   (add-hook 'web-mode-hook 'highlight-indentation-mode)
   (add-hook 'css-mode-hook 'highlight-indentation-mode)
-
+  (add-hook 'julia-mode-hook 'highlight-indentation-mode)
   (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
 
   ;; latex
@@ -668,7 +672,7 @@ This function is called at the very end of Spacemacs initialization."
      ("XXX+" . "#dc752f")
      ("\\?\\?\\?+" . "#dc752f")))
  '(package-selected-packages
-   '(yafolding tern soft-charcoal-theme migemo yaml-mode slime-company slime graphviz-dot-mode common-lisp-snippets ess-smart-equals ess-R-data-view ctable ess julia-mode git-gutter racket-mode faceup powershell csv-mode all-the-icons-dired all-the-icons memoize tide typescript-mode disaster company-c-headers cmake-mode clang-format web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern coffee-mode flycheck-pos-tip pos-tip flycheck mmm-mode markdown-toc markdown-mode gh-md yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional helm-pydoc cython-mode company-anaconda anaconda-mode pythonic darkroom flyspell-popup flyspell-correct-helm flyspell-correct auto-dictionary company-auctex auctex-latexmk auctex smeargle orgit magit-gitflow magit-popup helm-gitignore gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit transient git-commit with-editor web-mode tagedit slim-mode scss-mode sass-mode pug-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data key-chord auto-save-buffers-enhanced reveal-in-osx-finder pbcopy osx-trash osx-dictionary launchctl helm-company helm-c-yasnippet fuzzy company-statistics company auto-yasnippet yasnippet ac-ispell auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra lv hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))
+   '(tern rjsx-mode import-js grizzl add-node-modules-path soft-charcoal-theme migemo yaml-mode slime-company slime graphviz-dot-mode common-lisp-snippets ess-smart-equals ess-R-data-view ctable ess julia-mode git-gutter racket-mode faceup powershell csv-mode all-the-icons-dired all-the-icons memoize tide typescript-mode disaster company-c-headers cmake-mode clang-format web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern coffee-mode flycheck-pos-tip pos-tip flycheck mmm-mode markdown-toc markdown-mode gh-md yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional helm-pydoc cython-mode company-anaconda anaconda-mode pythonic darkroom flyspell-popup flyspell-correct-helm flyspell-correct auto-dictionary company-auctex auctex-latexmk auctex smeargle orgit magit-gitflow magit-popup helm-gitignore gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit transient git-commit with-editor web-mode tagedit slim-mode scss-mode sass-mode pug-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data key-chord auto-save-buffers-enhanced reveal-in-osx-finder pbcopy osx-trash osx-dictionary launchctl helm-company helm-c-yasnippet fuzzy company-statistics company auto-yasnippet yasnippet ac-ispell auto-complete ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint indent-guide hydra lv hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-projectile projectile pkg-info epl helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist highlight evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))
  '(pdf-view-midnight-colors '("#b2b2b2" . "#262626"))
  '(warning-suppress-types '((use-package))))
 (custom-set-faces

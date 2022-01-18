@@ -40,5 +40,7 @@ brew install \
      ag \
      aspell \
      cmigemo \
+     htop \
      figlet \
-     lolcat
+     lolcat \
+     tree
