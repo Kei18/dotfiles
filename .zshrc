@@ -61,5 +61,8 @@ alias gs='git status'
 alias rebuild='cd ..;rm -rf build; mkdir build; cd build; cmake ..; make'
 alias m='make'
 
+# additional commands
+export PATH="$HOME/.mybin/:$PATH"
+
 # add customer alias
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
