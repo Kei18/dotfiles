@@ -38,6 +38,7 @@ fi
 brew install \
      tmux \
      htop \
+     pueue \
      ag \
      aspell \
      cmigemo \
