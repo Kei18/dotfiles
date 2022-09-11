@@ -32,7 +32,10 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(yaml
+   '(rust
+     csv
+     lua
+     yaml
      html
      emacs-lisp
      git
@@ -789,6 +792,9 @@ before packages are loaded."
   (add-hook 'julia-mode-hook 'highlight-indentation-mode)
   (add-hook 'LaTeX-mode-hook 'electric-pair-mode)
   (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
+
+  ;; lsp
+  (setq read-process-output-max (* 1024 1024)) ;; 1mb
 )
 
 
@@ -811,7 +817,8 @@ This function is called at the very end of Spacemacs initialization."
  '(git-gutter:modified-sign "+")
  '(git-gutter:window-width 1)
  '(package-selected-packages
-   '(yaml-mode mmm-mode markdown-toc gh-md web-mode tagedit slim-mode scss-mode sass-mode pug-mode impatient-mode htmlize helm-css-scss haml-mode emmet-mode counsel-css counsel swiper ivy company-web web-completion-data add-node-modules-path tide typescript-mode web-beautify rjsx-mode prettier-js npm-mode nodejs-repl livid-mode skewer-mode simple-httpd json-reformat json-navigator hierarchy json-mode json-snatcher js2-refactor multiple-cursors js2-mode js-doc dap-mode bui helm-migemo yasnippet-snippets yafolding ws-butler writeroom-mode winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package undo-tree treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired treemacs-evil toc-org symon symbol-overlay string-inflection string-edit spaceline-all-the-icons smeargle restart-emacs request rainbow-delimiters quickrun popwin pcre2el password-generator paradox overseer org-superstar open-junk-file nameless multi-line migemo macrostep lsp-ui lsp-treemacs lsp-origami lorem-ipsum link-hint key-chord inspector info+ indent-guide hybrid-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org helm-mode-manager helm-make helm-lsp helm-ls-git helm-git-grep helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gitignore-templates git-timemachine git-modes git-messenger git-link git-gutter fuzzy forge font-lock+ flycheck-pos-tip flycheck-package flycheck-elsa flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-terminal-cursor-changer evil-surround evil-numbers evil-nerd-commenter evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-easymotion evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu emr elisp-slime-nav elisp-def editorconfig dumb-jump drag-stuff dotenv-mode doom-themes dired-quick-sort diminish devdocs define-word darkroom column-enforce-mode clean-aindent-mode centered-cursor-mode auto-yasnippet auto-save-buffers-enhanced auto-highlight-symbol auto-compile all-the-icons-dired aggressive-indent ace-link ace-jump-helm-line ac-ispell)))
+   '(toml-mode ron-mode racer rust-mode flycheck-rust lsp-docker cargo csv-mode helm-gtags ggtags counsel-gtags company-lua lua-mode yaml-mode mmm-mode markdown-toc gh-md web-mode tagedit slim-mode scss-mode sass-mode pug-mode impatient-mode htmlize helm-css-scss haml-mode emmet-mode counsel-css counsel swiper ivy company-web web-completion-data add-node-modules-path tide typescript-mode web-beautify rjsx-mode prettier-js npm-mode nodejs-repl livid-mode skewer-mode simple-httpd json-reformat json-navigator hierarchy json-mode json-snatcher js2-refactor multiple-cursors js2-mode js-doc dap-mode bui helm-migemo yasnippet-snippets yafolding ws-butler writeroom-mode winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package undo-tree treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired treemacs-evil toc-org symon symbol-overlay string-inflection string-edit spaceline-all-the-icons smeargle restart-emacs request rainbow-delimiters quickrun popwin pcre2el password-generator paradox overseer org-superstar open-junk-file nameless multi-line migemo macrostep lsp-ui lsp-treemacs lsp-origami lorem-ipsum link-hint key-chord inspector info+ indent-guide hybrid-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org helm-mode-manager helm-make helm-lsp helm-ls-git helm-git-grep helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gitignore-templates git-timemachine git-modes git-messenger git-link git-gutter fuzzy forge font-lock+ flycheck-pos-tip flycheck-package flycheck-elsa flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-terminal-cursor-changer evil-surround evil-numbers evil-nerd-commenter evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-easymotion evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu emr elisp-slime-nav elisp-def editorconfig dumb-jump drag-stuff dotenv-mode doom-themes dired-quick-sort diminish devdocs define-word darkroom column-enforce-mode clean-aindent-mode centered-cursor-mode auto-yasnippet auto-save-buffers-enhanced auto-highlight-symbol auto-compile all-the-icons-dired aggressive-indent ace-link ace-jump-helm-line ac-ispell))
+ '(warning-suppress-types '(((evil-collection)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

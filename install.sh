@@ -30,6 +30,7 @@ elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
     test -d ~/.linuxbrew && echo "export PATH=$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH" >> ~/.zshrc.local
     test -d /home/linuxbrew/.linuxbrew && echo "export PATH=/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH" >> ~/zshrc.local
+    source $HOME/zshrc
     # install emacs
     brew install emacs
 fi
