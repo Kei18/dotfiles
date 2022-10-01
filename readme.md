@@ -14,7 +14,11 @@ git clone --recursive https://github.com/Kei18/dotfiles $HOME/dotfiles && cd dot
 
 ## often used
 
+- zsh
 - emacs
+- tmux
 - htop
 - boost
-- zsh
+- eigen
+- pyenv
+- pueue

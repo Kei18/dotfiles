@@ -20,7 +20,9 @@ touch $HOME/.zshrc.local
 
 if [ "$(uname)" == 'Darwin' ]; then
     echo setup Darwin
-    brew install pbcopy
+    brew install \
+         pbcopy
+
 elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
     echo setup Linux
     test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
@@ -29,8 +31,6 @@ fi
 
 # brew install, common
 brew install \
-     tmux \
-     pueue \
      ag \
      aspell \
      cmigemo \
