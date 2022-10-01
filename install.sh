@@ -16,34 +16,25 @@ done
 # zsh
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 touch $HOME/.zshrc.local
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 if [ "$(uname)" == 'Darwin' ]; then
-    # homebrew
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-    # install emacs
-    brew tap d12frosted/emacs-plus
-    brew install emacs-plus@28 --with-spacemacs-icon
-    brew link emacs-plus
+    echo setup Darwin
+    brew install pbcopy
 elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
-    # linuxbrew
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
-    test -d ~/.linuxbrew && echo "export PATH=$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH" >> ~/.zshrc.local
-    test -d /home/linuxbrew/.linuxbrew && echo "export PATH=/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH" >> ~/zshrc.local
+    echo setup Linux
+    test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
+    echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/zshrc.local
     source $HOME/zshrc
-    # install emacs
-    brew install emacs
 fi
 
 # brew install, common
 brew install \
      tmux \
-     htop \
      pueue \
      ag \
      aspell \
      cmigemo \
-     htop \
      figlet \
      lolcat \
      tree

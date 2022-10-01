@@ -60,6 +60,7 @@ alias o='open ./'
 alias gs='git status'
 alias rebuild='cd ..;rm -rf build; mkdir build; cd build; cmake ..; make'
 alias m='make'
+alias mb='make -C build'
 
 # additional commands
 export PATH="$HOME/.mybin/:$PATH"

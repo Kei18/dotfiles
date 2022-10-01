@@ -563,8 +563,8 @@ before packages are loaded."
   ;; =================================================
   ;; appearance
   ;; =================================================
-  (setq initial-frame-alist '((width . (text-pixels . 1200))
-                              (height . (text-pixels . 900))))
+  ;; (setq initial-frame-alist '((width . (text-pixels . 1200))
+  ;;                             (height . (text-pixels . 900))))
 
   (require 'doom-themes)
   ;; Global settings (defaults)
@@ -685,6 +685,9 @@ before packages are loaded."
   ;; general
   (evil-define-key 'normal dired-mode-map "g" 'revert-buffer)
   (evil-define-key 'normal dired-mode-map "n" 'next-line)
+  (evil-define-key 'normal dired-mode-map "s" 'isearch-forward)
+  (evil-define-key 'normal dired-mode-map "r" 'isearch-backward)
+
 
   (require 'markdown-mode)
   (bind-keys :map markdown-mode-map
