@@ -24,8 +24,7 @@ if [ "$(uname)" == 'Darwin' ]; then
 elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
     echo setup Linux
     test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
-    echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/zshrc.local
-    source $HOME/zshrc
+    echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.zshrc.local
 fi
 
 # brew install, common

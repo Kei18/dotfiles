@@ -6,15 +6,15 @@ Set zsh as your login shell:
 chsh -s $(which zsh)
 ```
 
-Install:
+## install
+
 ```sh
 git clone --recursive https://github.com/Kei18/dotfiles $HOME/dotfiles && cd dotfiles && bash ./install.sh
 ```
 
-options:
-```sh
-brew install \
-    emacs \
-    tmux \
-    htop
-```
+## often used
+
+- emacs
+- htop
+- boost
+- zsh
