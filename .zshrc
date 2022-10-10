@@ -58,9 +58,16 @@ alias e='open /Applications/Emacs.app'
 alias j='jupyter lab'
 alias o='open ./'
 alias gs='git status'
+alias ga='git add'
+alias gp='git push'
+gm () {
+    msg=$@
+    git commit -m "$msg"
+}
 alias rebuild='cd ..;rm -rf build; mkdir build; cd build; cmake ..; make'
 alias m='make'
 alias mb='make -C build'
+alias s='source ~/.zshrc'
 
 # additional commands
 export PATH="$HOME/.mybin/:$PATH"
