@@ -29,6 +29,9 @@ elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
     echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.zshrc.local
 fi
 
+# tmux
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 # brew install, common
 brew install \
      ag \
