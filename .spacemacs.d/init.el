@@ -687,6 +687,7 @@ before packages are loaded."
   (evil-define-key 'normal dired-mode-map "n" 'next-line)
   (evil-define-key 'normal dired-mode-map "s" 'isearch-forward)
   (evil-define-key 'normal dired-mode-map "r" 'isearch-backward)
+  (evil-define-key 'normal dired-mode-map "j" 'cua-set-mark)
 
 
   (require 'markdown-mode)
@@ -695,7 +696,7 @@ before packages are loaded."
              ("M-n" . next-line-ten)
              )
 
-  (defun exit-insert-mode() (interactive)
+  (defun cleanup() (interactive)
          (whitespace-cleanup)
          (save-buffer)
          (evil-normal-state))
@@ -709,8 +710,8 @@ before packages are loaded."
   (require 'key-chord)
   (key-chord-mode 1)
   (setq key-chord-two-keys-delay 0.1)
-  (key-chord-define-global "fj" 'exit-insert-mode)
-  (key-chord-define-global "jf" 'exit-insert-mode)
+  (key-chord-define-global "fj" 'evil-normal-state)
+  (key-chord-define-global "jf" 'evil-normal-state)
   (key-chord-define-global "gl" 'goto-line)
   (key-chord-define-global "jj" 'cua-set-mark)
   (key-chord-define-global "uu" 'undo-tree-undo)
@@ -719,6 +720,8 @@ before packages are loaded."
   (key-chord-define-global "yy" 'yas-expand)
   (key-chord-define-global "]]" 'git-gutter:next-hunk)
   (key-chord-define-global "[[" 'git-gutter:previous-hunk)
+  (key-chord-define-global "gh" 'cleanup)
+  (key-chord-define-global "hg" 'cleanup)
 
   (require 'yafolding)
   (define-key yafolding-mode-map (kbd "<C-S-return>") nil)
@@ -744,11 +747,6 @@ before packages are loaded."
 
   (spacemacs/set-leader-keys
     "w4" 'spacemacs/layout-quad-columns)
-
-  ;; auto-save
-  (require 'auto-save-buffers-enhanced)
-  (setq auto-save-buffers-enhanced-interval 0.5)
-  (auto-save-buffers-enhanced t)
 
   ;; rect selection
   (cua-mode t)
