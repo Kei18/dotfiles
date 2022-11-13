@@ -69,6 +69,8 @@ alias m='make'
 alias mb='make -C build'
 alias s='source ~/.zshrc'
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # additional commands
 export PATH="$HOME/.mybin/:$PATH"
 

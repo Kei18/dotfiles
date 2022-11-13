@@ -22,3 +22,4 @@ git clone --recursive https://github.com/Kei18/dotfiles $HOME/dotfiles && cd dot
 - eigen
 - pyenv
 - pueue
+- nvm

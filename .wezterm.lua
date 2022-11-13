@@ -3,8 +3,8 @@ return {
   font = wezterm.font('Fira Code', {
                         weight = "DemiBold",
   }),
-  font_size = 11.0,
-  line_height = 1.2,
+  font_size = 12.0,
+  line_height = 1.0,
   default_cursor_style = 'SteadyUnderline',
   enable_scroll_bar = true,
   color_scheme = "iceberg-dark",
