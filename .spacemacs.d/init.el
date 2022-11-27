@@ -801,6 +801,7 @@ before packages are loaded."
   (add-hook 'julia-mode-hook 'highlight-indentation-mode)
   (add-hook 'LaTeX-mode-hook 'electric-pair-mode)
   (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
+  (add-to-list 'auto-mode-alist '("\\.zshrc.local" . shell-script-mode))
 
   ;; lsp
   (setq read-process-output-max (* 1024 1024)) ;; 1mb
