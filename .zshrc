@@ -51,6 +51,8 @@ function cd-up { zle push-line && LBUFFER='builtin cd ..' && zle accept-line }
 zle -N cd-up
 bindkey "^Y" cd-up
 
+setopt +o nomatch
+
 # ailas
 alias la='ls -all'
 alias l='ls -all'
@@ -68,6 +70,10 @@ alias rebuild='cd ..;rm -rf build; mkdir build; cd build; cmake ..; make'
 alias m='make'
 alias mb='make -C build'
 alias s='source ~/.zshrc'
+
+# latex
+alias lmk='latexmk --pvc'
+alias latexclear='rm -rvf *.aux *.bbl *.blg *.fdb_latexmk *.fls *.loa *.lof *.log *.lot *.out *.toc'
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
