@@ -75,7 +75,9 @@ alias s='source ~/.zshrc'
 alias lmk='latexmk --pvc'
 alias latexclear='rm -rvf *.aux *.bbl *.blg *.fdb_latexmk *.fls *.loa *.lof *.log *.lot *.out *.toc'
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+if [ -e "/opt/homebrew/bin/brew" ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
 # additional commands
 export PATH="$HOME/.mybin/:$PATH"
