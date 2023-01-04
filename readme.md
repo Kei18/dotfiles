@@ -23,3 +23,5 @@ git clone --recursive https://github.com/Kei18/dotfiles $HOME/dotfiles && cd dot
 - pyenv
 - pueue
 - nvm
+- https://github.com/sindresorhus/quick-look-plugins
+- https://github.com/sbarex/SourceCodeSyntaxHighlight
