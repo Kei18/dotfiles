@@ -3,7 +3,7 @@
 #
 
 alias ls='exa'
-alias l='ls -all -l'
+alias l='ls -a -l'
 
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
