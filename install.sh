@@ -24,10 +24,13 @@ if [ "$(uname)" == 'Darwin' ]; then
          pbcopy
 
 elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
-    echo setup Linux
+    # check https://docs.brew.sh/Homebrew-on-Linux
     test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
+    test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
     echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.zshrc.local
 fi
+
+source ~/.zshrc
 
 # tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
@@ -43,4 +46,6 @@ brew install \
      ncdu \
      exa \
      fzf \
-     zoxide
+     zoxide \
+     htop \
+     bat

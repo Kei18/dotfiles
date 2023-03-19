@@ -23,5 +23,6 @@ git clone --recursive https://github.com/Kei18/dotfiles $HOME/dotfiles && cd dot
 - pyenv
 - pueue
 - nvm
+- juliaup
+- clang-format
 - https://github.com/sindresorhus/quick-look-plugins
-- https://github.com/sbarex/SourceCodeSyntaxHighlight
