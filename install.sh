@@ -39,4 +39,8 @@ brew install \
      cmigemo \
      figlet \
      lolcat \
-     tree
+     tree \
+     ncdu \
+     exa \
+     fzf \
+     zoxide
