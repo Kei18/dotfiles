@@ -87,7 +87,22 @@ fh() {
     eval $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
 }
 
+# flog - git commit browser
+# ref: https://qiita.com/kamykn/items/aa9920f07487559c0c7e
+flog() {
+    git log --graph --color=always \
+        --format="%C(auto)%h%d %s %C(#C0C0C0)%C(bold)%cr" "$@" |
+        fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
+            --bind "ctrl-m:execute:
+              (grep -o '[a-f0-9]\{7\}' | head -1 |
+              xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
+              {}
+              FZF-EOF
+             "
+}
+
 alias gb='fbr'
+alias gl='flog'
 alias h='fh'
 
 # latex
@@ -102,6 +117,7 @@ fi
 export PATH="$HOME/.mybin/:$PATH"
 
 eval "$(zoxide init zsh)"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # add customer alias
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
