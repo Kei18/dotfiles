@@ -2,9 +2,6 @@
 # Executes commands at the start of an interactive session.
 #
 
-alias ls='exa'
-alias l='ls -all -l'
-
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
@@ -43,7 +40,7 @@ setopt hist_reduce_blanks
 setopt hist_verify
 
 # after cd then ls -all
-chpwd() { l }
+chpwd() { exa -a  -l }
 
 # delete ctrl-w
 autoload -U select-word-style
@@ -57,6 +54,7 @@ bindkey "^Y" cd-up
 setopt +o nomatch
 
 # ailas
+alias l='exa -a -l'
 alias cat='bat'
 alias e='open /Applications/Emacs.app'
 alias j='jupyter lab'
