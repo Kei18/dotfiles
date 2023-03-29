@@ -48,4 +48,5 @@ brew install \
      fzf \
      zoxide \
      htop \
-     bat
+     bat \
+     git-delta

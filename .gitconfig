@@ -3,3 +3,19 @@
 	name = Kei18
 [pull]
 	rebase = false
+
+[pager]
+		diff = delta
+		log = delta
+		reflog = delta
+		show = delta
+
+[delta]
+		plus-style = "syntax #012800"
+		minus-style = "syntax #340001"
+		syntax-theme = Monokai Extended
+		side-by-side = true
+		navigate = true
+
+[interactive]
+		diffFilter = delta --color-only
