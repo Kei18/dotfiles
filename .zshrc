@@ -68,6 +68,7 @@ gm () {
     msg=$@
     git commit -m "$msg"
 }
+alias gd='git diff'
 alias rebuild='cd ..;rm -rf build; mkdir build; cd build; cmake ..; make'
 alias m='make'
 alias mb='make -C build'

@@ -48,7 +48,8 @@ brew install \
      fzf \
      zoxide \
      htop \
-     bat
+     bat \
+     git-delta
 
 # fzf
 $(brew --prefix)/opt/fzf/install
