@@ -26,3 +26,5 @@ git clone --recursive https://github.com/Kei18/dotfiles $HOME/dotfiles && cd dot
 - juliaup
 - clang-format
 - https://github.com/sindresorhus/quick-look-plugins
+- latex
+- pyright

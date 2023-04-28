@@ -49,3 +49,6 @@ brew install \
      zoxide \
      htop \
      bat
+
+# fzf
+$(brew --prefix)/opt/fzf/install

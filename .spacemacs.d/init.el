@@ -780,7 +780,7 @@ before packages are loaded."
   (when (eq system-type 'gnu/linux)
     (setq migemo-dictionary "/home/okumura/.linuxbrew/share/migemo/utf-8/migemo-dict"))
   (when (eq system-type 'darwin)
-    (setq migemo-dictionary "/usr/local/share/migemo/utf-8/migemo-dict"))
+    (setq migemo-dictionary "/opt/homebrew/Cellar/cmigemo/20110227/share/migemo/utf-8/migemo-dict"))
   (setq migemo-user-dictionary nil)
   (setq migemo-regex-dictionary nil)
   (setq migemo-coding-system 'utf-8-unix)
