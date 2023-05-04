@@ -50,3 +50,6 @@ brew install \
      htop \
      bat \
      git-delta
+
+# fzf
+$(brew --prefix)/opt/fzf/install
