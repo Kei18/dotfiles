@@ -38,3 +38,5 @@ apt-get install -y \
      htop \
      bat \
      git-delta
+
+echo installation done
