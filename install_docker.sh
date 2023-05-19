@@ -1,5 +1,5 @@
 #!/bin/bash
-set -u
+# set -u
 SCRIPT_DIR=$(cd $(dirname $0); pwd)
 
 # deploy
