@@ -22,7 +22,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # zoxide
 curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
-echo 'export PATH="/root/.local/bin:$PATH"' >> .zshrc.local
+echo 'export PATH="/root/.local/bin:$PATH"' >> $HOME/.zshrc.local
 
 # fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
@@ -40,5 +40,7 @@ apt-get install -y \
 
 # bat \
 # git-delta
+
+unalias cat
 
 echo installation done
