@@ -1,5 +1,5 @@
 #!/bin/bash
-# set -u
+set -u
 SCRIPT_DIR=$(cd $(dirname $0); pwd)
 
 # deploy
@@ -35,8 +35,9 @@ apt-get install -y \
      tree \
      ncdu \
      exa \
-     htop \
-     bat \
-     git-delta
+     htop
+
+# bat \
+# git-delta
 
 echo installation done
