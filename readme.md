@@ -9,7 +9,9 @@ chsh -s $(which zsh)
 ## install
 
 ```sh
-git clone --recursive https://github.com/Kei18/dotfiles $HOME/dotfiles && cd dotfiles && bash ./install.sh
+git clone --recursive https://github.com/Kei18/dotfiles $HOME/dotfiles
+cd dotfiles
+bash ./install_xx.sh
 ```
 
 ## often used

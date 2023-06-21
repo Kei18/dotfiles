@@ -27,13 +27,13 @@ curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | 
 echo 'export PATH="/root/.local/bin:$PATH"' >> $HOME/.zshrc.local
 
 sudo apt install -y \
-        tmux \
-        figlet \
-        lolcat \
-        tree \
-        ncdu \
-        exa \
-        htop \
-        bat \
-        git-delta \
-        fzf
+     fonts-firacode \
+     tmux \
+     figlet \
+     lolcat \
+     tree \
+     ncdu \
+     exa \
+     htop \
+     bat \
+     fzf
