@@ -796,6 +796,8 @@ before packages are loaded."
   ;; point history
   (point-history-mode t)
 
+  (setq enable-remote-dir-locals t)
+
   ;; =================================================
   ;; language
   ;; =================================================
