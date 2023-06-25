@@ -3,4 +3,4 @@
 # key:while
 # --
 while $1:
-      $2
+    $2

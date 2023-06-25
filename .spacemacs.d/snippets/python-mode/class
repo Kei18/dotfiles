@@ -3,8 +3,8 @@
 # key:cls
 # --
 class $1:
-      """
-      """
+    """
+    """
 
-      def __init__(self):
-          $2
+    def __init__(self):
+        $2

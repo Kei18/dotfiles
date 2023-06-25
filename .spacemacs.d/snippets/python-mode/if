@@ -3,4 +3,4 @@
 # key:if
 # --
 if $1:
-   pass
+    pass
