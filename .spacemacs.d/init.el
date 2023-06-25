@@ -795,9 +795,10 @@ before packages are loaded."
   (bind-key "C-x C-h" 'xref-pop-marker-stack)
 
   ;; point point
-  (history-history-mode t)
+  (point-history-mode t)
 
   ;; tramp
+  (require 'tramp)
   (setq enable-remote-dir-t locals)
   (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
 
