@@ -34,9 +34,12 @@ bash ./install_xx.sh
 
 ## pip
 
-- pyenv, black, isort
-- https://github.com/lckr/jupyterlab-variableInspector
-- https://github.com/ryantam626/jupyterlab_code_formatter
-- https://github.com/lckr/jupyterlab-variableInspector
-- https://github.com/jupyter-lsp/jupyterlab-lsp
-- https://github.com/jupyterlab/jupyterlab-git
+```sh
+pip install \
+    black \
+    isort \
+    lckr-jupyterlab-variableinspector \
+    jupyterlab-code-formatter \
+    jupyterlab-lsp \
+    jupyter-archive
+```
