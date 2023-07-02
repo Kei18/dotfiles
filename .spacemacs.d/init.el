@@ -721,7 +721,7 @@ before packages are loaded."
 
   (require 'key-chord)
   (key-chord-mode 1)
-  (setq key-chord-two-keys-delay 0.2)
+  (setq key-chord-two-keys-delay 0.5)
   (key-chord-define-global "fj" 'evil-normal-state)
   (key-chord-define-global "jf" 'evil-normal-state)
   (key-chord-define-global "gl" 'goto-line)
@@ -735,6 +735,10 @@ before packages are loaded."
   (key-chord-define-global "gh" 'cleanup)
   (key-chord-define-global "hg" 'cleanup)
   (key-chord-define-global "hh" 'point-history-show)
+
+  (bind-key "C-x TAB" 'yas-expand)
+  (bind-key "C-u" 'undo-tree-undo)
+  (bind-key "C-i" 'undo-tree-redo)
 
   (require 'yafolding)
   (define-key yafolding-mode-map (kbd "<C-S-return>") nil)
@@ -803,7 +807,7 @@ before packages are loaded."
 
   ;; tramp
   (require 'tramp)
-  (setq enable-remote-dir-t locals)
+  ;; (setq enable-remote-dir-t locals)
   (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
 
   ;; =================================================
