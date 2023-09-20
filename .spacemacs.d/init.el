@@ -701,6 +701,8 @@ before packages are loaded."
   (evil-define-key 'normal dired-mode-map "s" 'isearch-forward)
   (evil-define-key 'normal dired-mode-map "r" 'isearch-backward)
   (evil-define-key 'normal dired-mode-map "j" 'cua-set-mark)
+  (evil-define-key 'normal dired-mode-map "[" 'backward-page)
+  (evil-define-key 'normal dired-mode-map "]" 'forward-page)
   (define-key evil-motion-state-map (kbd "RET") nil)
 
   (require 'markdown-mode)

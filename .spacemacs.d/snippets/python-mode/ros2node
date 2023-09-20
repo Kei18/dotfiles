@@ -1,0 +1,23 @@
+# -*- mode: snippet -*-
+# name:ros2node
+# key:ros2node
+# --
+import rclpy
+from rclpy.node import Node
+
+
+class $1(Node):
+    def __init__(self):
+        super().__init__("$1")
+
+
+def main(args=None):
+    rclpy.init(args=args)
+    node = $1()
+    rclpy.spin(node)
+    node.destroy_node()
+    rclpy.shutdown()
+
+
+if __name__ == "__main__":
+    main()
