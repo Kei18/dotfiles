@@ -57,7 +57,13 @@ setopt +o nomatch
 
 # ailas
 alias l='exa -a -l'
-alias cat='bat'
+case ${OSTYPE} in
+  # macOS
+    darwin*)
+        alias cat='bat'
+    linux*)
+        alias cat='batcat'
+esac
 alias e='open /Applications/Emacs.app'
 alias j='jupyter lab'
 alias o='open ./'
