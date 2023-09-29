@@ -61,8 +61,10 @@ case ${OSTYPE} in
   # macOS
     darwin*)
         alias cat='bat'
+        ;;
     linux*)
         alias cat='batcat'
+        ;;
 esac
 alias e='open /Applications/Emacs.app'
 alias j='jupyter lab'
