@@ -41,6 +41,4 @@ apt-get install -y \
 # bat \
 # git-delta
 
-unalias cat
-
 echo installation done
