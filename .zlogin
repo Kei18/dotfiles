@@ -22,5 +22,5 @@ if (( $+commands[fortune] )); then
     fi
 fi
 
-welcome_msg="This is "`hostname`" @ "`whoami`
+welcome_msg="This is "`whoami`" @ "`hostname`
 echo -e "`figlet ${welcome_msg}`" | lolcat
