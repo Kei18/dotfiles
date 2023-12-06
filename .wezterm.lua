@@ -9,6 +9,16 @@ return {
       mods = 'CTRL|SHIFT',
       action = wezterm.action.DisableDefaultAssignment,
     },
+    {
+      key = 'n',
+      mods = 'CMD',
+      action = wezterm.action.SendKey { key = 'n', mods = 'OPT' },
+    },
+    {
+      key = 'p',
+      mods = 'CMD',
+      action = wezterm.action.SendKey { key = 'p', mods = 'OPT' },
+    }
   },
   font_size = 12.0,
   line_height = 1.0,
