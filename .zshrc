@@ -2,8 +2,6 @@
 # Executes commands at the start of an interactive session.
 #
 
-export LANG=en_US.UTF-8
-
 alias l='ls -all -l'
 
 # Source Prezto.
@@ -14,7 +12,7 @@ fi
 setopt IGNOREEOF
 
 # lang, english
-export LANG=C
+export LANG=en_US.UTF-8
 
 # auto complete
 autoload -Uz compinit
