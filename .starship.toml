@@ -21,7 +21,7 @@ ssh_only = false
 format = '[@️$hostname](bg:#a3aed2 fg:#090c0c) '
 
 [directory]
-style = "fg:#e3e5e5 bg:#769ff0"
+style = "fg:#0e0e0e bg:#769ff0"
 format = "[ $path ]($style)"
 truncation_length = 0
 truncation_symbol = "…/"

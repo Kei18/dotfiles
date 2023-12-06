@@ -18,6 +18,16 @@ return {
       key = 'p',
       mods = 'CMD',
       action = wezterm.action.SendKey { key = 'p', mods = 'OPT' },
+    },
+    {
+      key = 'Backspace',
+      mods = 'CMD',
+      action = wezterm.action.SendKey { key = 'Backspace', mods = 'OPT' },
+    },
+    {
+      key = 'Backspace',
+      mods = 'CTRL',
+      action = wezterm.action.SendKey { key = 'Backspace', mods = 'OPT' },
     }
   },
   font_size = 12.0,
