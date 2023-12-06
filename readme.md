@@ -24,6 +24,7 @@ bash ./install_xx.sh
 - eigen
 - pyenv
 - pueue
+- starship
 - nvm
 - juliaup
 - clang-format

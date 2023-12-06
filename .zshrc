@@ -2,6 +2,8 @@
 # Executes commands at the start of an interactive session.
 #
 
+export LANG=en_US.UTF-8
+
 alias l='ls -all -l'
 
 # Source Prezto.
@@ -127,6 +129,10 @@ export PATH="$HOME/.mybin/:$PATH"
 
 eval "$(zoxide init zsh)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# starship
+export STARSHIP_CONFIG=~/.starship.toml
+eval "$(starship init zsh)"
 
 # add customer alias
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local

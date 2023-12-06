@@ -258,7 +258,7 @@ It should only modify the values of Spacemacs settings."
    ;; Default font or prioritized list of fonts. The `:size' can be specified as
    ;; a non-negative integer (pixel size), or a floating-point (point size).
    ;; Point size is recommended, because it's device independent. (default 10.0)
-   dotspacemacs-default-font '("Source Code Pro"
+   dotspacemacs-default-font '("Fira Code"
                                :size 13.0
                                :weight normal
                                :width normal
@@ -649,6 +649,10 @@ before packages are loaded."
   (defun previous-line-ten() (interactive) (previous-line-n 10))
   (bind-key "M-n" 'next-line-ten)
   (bind-key "M-p" 'previous-line-ten)
+  (bind-key "C-M-<right>" 'enlarge-window-horizontally)
+  (bind-key "C-M-<left>" 'shrink-window-horizontally)
+  (bind-key "C-M-<up>" 'enlarge-window)
+  (bind-key "C-M-<down>" 'shrink-window)
 
   ;; window
   (defun apply-emacs-keybind-to-evil (mode)

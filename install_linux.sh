@@ -28,6 +28,9 @@ echo 'export PATH="/root/.local/bin:$PATH"' >> $HOME/.zshrc.local
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 
+# starship
+curl -sS https://starship.rs/install.sh | sh
+
 sudo apt install -y \
      fonts-firacode \
      tmux \
