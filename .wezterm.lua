@@ -20,6 +20,11 @@ return {
       action = wezterm.action.SendKey { key = 'p', mods = 'OPT' },
     },
     {
+      key = 'DownArrow',
+      mods = 'CMD',
+      action = wezterm.action.SendKey { key = 'DownArrow', mods = 'OPT' },
+    },
+    {
       key = 'Backspace',
       mods = 'CMD',
       action = wezterm.action.SendKey { key = 'Backspace', mods = 'OPT' },
