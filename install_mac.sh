@@ -49,7 +49,11 @@ brew install \
      zoxide \
      htop \
      bat \
-     git-delta
+     git-delta \
+     zsh-autosuggestions
 
 # fzf
 $(brew --prefix)/opt/fzf/install
+
+# zsh-auto suggestion
+echo "source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc.local

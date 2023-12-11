@@ -66,7 +66,7 @@ case ${OSTYPE} in
         alias cat='batcat'
         ;;
 esac
-alias e='open /Applications/Emacs.app'
+alias e='emacs -nw'
 alias j='jupyter lab'
 alias o='open ./'
 alias gs='git status'
