@@ -50,7 +50,9 @@ brew install \
      htop \
      bat \
      git-delta \
-     zsh-autosuggestions
+     zsh-autosuggestions \
+     fd \
+     ripgrep
 
 # fzf
 $(brew --prefix)/opt/fzf/install

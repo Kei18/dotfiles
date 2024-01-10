@@ -41,6 +41,7 @@ sudo apt install -y \
      exa \
      htop \
      bat \
-     silversearcher-ag
+     silversearcher-ag \
+     fd-find
 
 source ~/.zshrc
