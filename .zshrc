@@ -82,6 +82,7 @@ alias m='make'
 alias mb='make -C build'
 alias s='source ~/.zshrc'
 alias q='pueue'
+alias qa='pueue add -- '
 
 # fbr - checkout git branch (including remote branches)
 fbr() {
