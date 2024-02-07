@@ -81,6 +81,7 @@ alias rebuild='cd ..;rm -rf build; mkdir build; cd build; cmake ..; make'
 alias m='make'
 alias mb='make -C build'
 alias s='source ~/.zshrc'
+alias q='pueue'
 
 # fbr - checkout git branch (including remote branches)
 fbr() {
@@ -123,6 +124,7 @@ if [ -e "/opt/homebrew/bin/brew" ]; then
 fi
 
 # additional commands
+export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.mybin/:$PATH"
 
 eval "$(zoxide init zsh)"
