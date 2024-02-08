@@ -81,8 +81,11 @@ alias rebuild='cd ..;rm -rf build; mkdir build; cd build; cmake ..; make'
 alias m='make'
 alias mb='make -C build'
 alias s='source ~/.zshrc'
+
 alias q='pueue'
-alias qa='pueue add -- '
+alias qa='pueue add --'
+alias qfl='pueue follow'
+alias qcl='pueue clean'
 
 # fbr - checkout git branch (including remote branches)
 fbr() {
