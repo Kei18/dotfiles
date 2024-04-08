@@ -63,7 +63,7 @@ case ${OSTYPE} in
         alias cat='bat'
         ;;
     linux*)
-        alias cat='batcat'
+        alias cat='bat'
         ;;
 esac
 alias e='emacs -nw'
