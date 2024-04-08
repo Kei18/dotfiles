@@ -40,6 +40,9 @@ cargo install --locked \
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 
+# zsh-auto completion
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+
 # sudo apt install -y \
 #      fonts-firacode \
 #      figlet \
