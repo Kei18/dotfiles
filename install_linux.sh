@@ -34,7 +34,9 @@ cargo install --locked \
       git-delta \
       pueue \
       bandwhich \
-      lolcat
+      lolcat \
+      dua-cli \
+      ouch
 
 # fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
@@ -46,7 +48,6 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosugges
 # sudo apt install -y \
 #      fonts-firacode \
 #      figlet \
-#      lolcat \
 #      tree
 
 source ~/.zshrc

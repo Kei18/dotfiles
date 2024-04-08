@@ -140,5 +140,8 @@ eval "$(zoxide init zsh)"
 export STARSHIP_CONFIG=~/.starship.toml
 eval "$(starship init zsh)"
 
+# auto suggestion
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 # add customer alias
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
