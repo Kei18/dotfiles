@@ -44,7 +44,7 @@ brew install \
      lolcat \
      tree \
      ncdu \
-     exa \
+     eza \
      fzf \
      zoxide \
      htop \

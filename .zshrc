@@ -42,7 +42,7 @@ setopt hist_reduce_blanks
 setopt hist_verify
 
 # after cd then ls -all
-chpwd() { exa -a  -l }
+chpwd() { eza -a  -l }
 
 # delete ctrl-w
 autoload -U select-word-style
@@ -56,7 +56,7 @@ bindkey "^Y" cd-up
 setopt +o nomatch
 
 # ailas
-alias l='exa -a -l'
+alias l='eza -a -l'
 case ${OSTYPE} in
   # macOS
     darwin*)
