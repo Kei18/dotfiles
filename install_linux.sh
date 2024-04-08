@@ -20,10 +20,6 @@ touch $HOME/.zshrc.local
 # tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-# fzf
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
-
 # cargo
 curl https://sh.rustup.rs -sSf | sh
 
@@ -34,7 +30,15 @@ cargo install --locked \
       starship \
       du-dust \
       bat \
-      eza
+      eza \
+      git-delta \
+      pueue \
+      bandwhich \
+      lolcat
+
+# fzf
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
 
 # sudo apt install -y \
 #      fonts-firacode \

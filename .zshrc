@@ -118,6 +118,8 @@ flog() {
 alias gb='fbr'
 alias gl='flog'
 alias h='fh'
+alias gd="git diff"
+alias pc="pre-commit"
 
 # latex
 alias lmk='latexmk --pvc'
