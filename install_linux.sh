@@ -36,6 +36,7 @@ cargo install --locked \
       bandwhich \
       lolcat \
       dua-cli \
+      ripgrep \
       ouch
 
 # fzf
