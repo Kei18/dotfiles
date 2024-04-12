@@ -24,7 +24,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 curl https://sh.rustup.rs -sSf | sh
 
 # zoxide
-cargo install --locked \
+~/.cargo/bin/cargo install --locked \
       zoxide \
       fd-find \
       starship \
