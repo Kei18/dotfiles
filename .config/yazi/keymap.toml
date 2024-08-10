@@ -1,0 +1,67 @@
+[[manager.prepend_keymap]]
+on  = "p"
+run = 'arrow -1'
+
+[[manager.prepend_keymap]]
+on  = "n"
+run = 'arrow 1'
+
+[[manager.prepend_keymap]]
+on  = "<C-p>"
+run = 'arrow -1'
+
+[[manager.prepend_keymap]]
+on  = "<C-n>"
+run = 'arrow 1'
+
+[[manager.prepend_keymap]]
+on  = "<A-n>"
+run = 'arrow 10'
+
+[[manager.prepend_keymap]]
+on  = "<A-p>"
+run = 'arrow -10'
+
+[[manager.prepend_keymap]]
+on  = "f"
+run = 'enter'
+
+[[manager.prepend_keymap]]
+on  = "<C-f>"
+run = 'enter'
+
+[[manager.prepend_keymap]]
+on  = "s"
+run = 'find'
+
+[[manager.prepend_keymap]]
+on  = "r"
+run = 'find'
+
+[[manager.prepend_keymap]]
+on  = "<C-s>"
+run = 'find'
+
+[[manager.prepend_keymap]]
+on  = "b"
+run = 'leave'
+
+[[manager.prepend_keymap]]
+on  = "<C-b>"
+run = 'leave'
+
+[[manager.prepend_keymap]]
+on   = "<Esc>"
+run  = "close"
+
+[[manager.prepend_keymap]]
+on   = "<Enter>"
+run  = "plugin --sync smart-enter"
+
+[[manager.prepend_keymap]]
+on   = "<Backspace>"
+run  = 'leave'
+
+[[manager.prepend_keymap]]
+on  = "R"
+run = 'rename'

@@ -50,5 +50,3 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosugges
 #      fonts-firacode \
 #      figlet \
 #      tree
-
-source ~/.zshrc

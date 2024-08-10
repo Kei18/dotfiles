@@ -72,6 +72,7 @@ alias o='open ./'
 alias gs='git status'
 alias ga='git add'
 alias gp='git push'
+alias gu='git git restore --staged'
 gm () {
     msg=$@
     git commit -m "$msg"
@@ -87,6 +88,8 @@ alias qa='pueue add --'
 alias qfl='pueue follow'
 alias qcl='pueue clean'
 
+export FZF_TMUX=1
+alias fp="fzf-tmux -p 60%"
 # fbr - checkout git branch (including remote branches)
 fbr() {
     local branches branch
@@ -120,6 +123,18 @@ alias gl='flog'
 alias h='fh'
 alias gd="git diff"
 alias pc="pre-commit"
+
+# yazi
+function yy() {
+    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+    yazi "$@" --cwd-file="$tmp"
+    if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+        builtin cd -- "$cwd"
+    fi
+    rm -f -- "$tmp"
+    echo -ne "\e[4 q"
+}
+echo -ne "\e[4 q"  # not sure this is correct...
 
 # latex
 alias lmk='latexmk --pvc'
