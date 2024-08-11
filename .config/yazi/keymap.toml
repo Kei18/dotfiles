@@ -1,67 +1,71 @@
 [[manager.prepend_keymap]]
-on  = "p"
+on  = ["p"]
 run = 'arrow -1'
 
 [[manager.prepend_keymap]]
-on  = "n"
+on  = ["n"]
 run = 'arrow 1'
 
 [[manager.prepend_keymap]]
-on  = "<C-p>"
+on  = ["<C-p>"]
 run = 'arrow -1'
 
 [[manager.prepend_keymap]]
-on  = "<C-n>"
+on  = ["<C-n>"]
 run = 'arrow 1'
 
 [[manager.prepend_keymap]]
-on  = "<A-n>"
+on  = ["<A-n>"]
 run = 'arrow 10'
 
 [[manager.prepend_keymap]]
-on  = "<A-p>"
+on  = ["<A-p>"]
 run = 'arrow -10'
 
 [[manager.prepend_keymap]]
-on  = "f"
+on  = ["f"]
 run = 'enter'
 
 [[manager.prepend_keymap]]
-on  = "<C-f>"
+on  = ["<C-f>"]
 run = 'enter'
 
 [[manager.prepend_keymap]]
-on  = "s"
+on  = ["s"]
 run = 'find'
 
 [[manager.prepend_keymap]]
-on  = "r"
+on  = ["r"]
 run = 'find'
 
 [[manager.prepend_keymap]]
-on  = "<C-s>"
+on  = ["<C-s>"]
 run = 'find'
 
 [[manager.prepend_keymap]]
-on  = "b"
+on  = ["b"]
 run = 'leave'
 
 [[manager.prepend_keymap]]
-on  = "<C-b>"
+on  = ["<C-b>"]
 run = 'leave'
 
 [[manager.prepend_keymap]]
-on   = "<Esc>"
+on   = ["<Esc>"]
 run  = "close"
 
 [[manager.prepend_keymap]]
-on   = "<Enter>"
+on   = ["<C-c>"]
+run  = "close"
+
+[[manager.prepend_keymap]]
+on   = ["<Enter>"]
 run  = "plugin --sync smart-enter"
 
 [[manager.prepend_keymap]]
-on   = "<Backspace>"
+on   = ["<Backspace>"]
 run  = 'leave'
 
 [[manager.prepend_keymap]]
-on  = "R"
+on  = ["R"]
 run = 'rename'
