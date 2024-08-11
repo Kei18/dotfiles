@@ -72,7 +72,7 @@ alias o='open ./'
 alias gs='git status'
 alias ga='git add'
 alias gp='git push'
-alias gu='git git restore --staged'
+alias gu='git restore --staged'
 gm () {
     msg=$@
     git commit -m "$msg"
