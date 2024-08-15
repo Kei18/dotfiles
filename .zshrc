@@ -57,16 +57,8 @@ setopt +o nomatch
 
 # ailas
 alias l='eza -a -l'
-case ${OSTYPE} in
-  # macOS
-    darwin*)
-        alias cat='bat'
-        ;;
-    linux*)
-        alias cat='bat'
-        ;;
-esac
-alias e='emacs -nw'
+alias cat='bat'
+alias e="emacsclient -t -a ''"
 alias j='jupyter lab'
 alias o='open ./'
 alias gs='git status'

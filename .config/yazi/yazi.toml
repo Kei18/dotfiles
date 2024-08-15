@@ -2,3 +2,8 @@
 show_hidden = true
 show_symlink = true
 linemode = "ctime"
+
+[opener]
+edit = [
+  { run = 'emacsclient -t -a "" "$@"', block = true },
+]

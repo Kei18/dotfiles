@@ -37,7 +37,8 @@ curl https://sh.rustup.rs -sSf | sh
       lolcat \
       dua-cli \
       ripgrep \
-      ouch
+      ouch \
+      yazi-fm yazi-cli
 
 # fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf

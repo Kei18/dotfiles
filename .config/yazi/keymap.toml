@@ -69,3 +69,15 @@ run  = 'leave'
 [[manager.prepend_keymap]]
 on  = ["R"]
 run = 'rename'
+
+[[manager.prepend_keymap]]
+on  = ["]"]
+run = 'arrow 99999999'
+
+[[manager.prepend_keymap]]
+on  = ["["]
+run = 'arrow -99999999'
+
+[[manager.prepend_keymap]]
+on  = ["+"]
+run = 'create'
