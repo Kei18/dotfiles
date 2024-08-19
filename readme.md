@@ -14,6 +14,26 @@ cd dotfiles
 bash ./install_xx.sh
 ```
 
+## ssh login
+
+```sh
+ssh-copy-id user@addr
+```
+
+## github setup
+
+```sh
+ssh-keygen -t ed25519 -C keisuke.oku18@gmail.com
+eval "$(ssh-agent -s)"
+cat ~/.ssh/id_ed25519.pub
+```
+
+and visit https://github.com/settings/ssh/new
+
+```
+ssh -T git@github.com
+```
+
 ## often used
 
 - zsh
