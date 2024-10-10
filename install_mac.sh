@@ -16,46 +16,46 @@ done
 # zsh
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 touch $HOME/.zshrc.local
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-if [ "$(uname)" == 'Darwin' ]; then
-    echo setup Darwin
-    brew install \
-         pbcopy
-
-elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
-    # check https://docs.brew.sh/Homebrew-on-Linux
-    test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
-    test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-    echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.zshrc.local
-fi
-
-source ~/.zshrc
 
 # tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-# brew install, common
+# Homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# cargo
+curl https://sh.rustup.rs -sSf | sh
+
 brew install \
      ag \
      aspell \
      cmigemo \
      figlet \
      lolcat \
-     tree \
-     ncdu \
-     eza \
-     fzf \
-     zoxide \
-     htop \
-     bat \
-     git-delta \
-     zsh-autosuggestions \
-     fd \
-     ripgrep
+     pbcopy
+
+~/.cargo/bin/cargo install --locked \
+                   zoxide \
+                   fd-find \
+                   starship \
+                   du-dust \
+                   bat \
+                   eza \
+                   git-delta \
+                   pueue \
+                   bandwhich \
+                   lolcat \
+                   dua-cli \
+                   ripgrep \
+                   ouch \
+                   yazi-fm \
+                   yazi-cli \
+                   htop \
+                   cargo-tree
 
 # fzf
-$(brew --prefix)/opt/fzf/install
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
 
-# zsh-auto suggestion
-echo "source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc.local
+# zsh-auto completion
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
