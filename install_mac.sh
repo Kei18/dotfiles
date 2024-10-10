@@ -20,19 +20,8 @@ touch $HOME/.zshrc.local
 # tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-# Homebrew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
 # cargo
 curl https://sh.rustup.rs -sSf | sh
-
-brew install \
-     ag \
-     aspell \
-     cmigemo \
-     figlet \
-     lolcat \
-     pbcopy
 
 ~/.cargo/bin/cargo install --locked \
                    zoxide \
@@ -50,8 +39,20 @@ brew install \
                    ouch \
                    yazi-fm \
                    yazi-cli \
-                   htop \
-                   cargo-tree
+                   htop
+
+# Homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+brew install \
+     ag \
+     aspell \
+     cmigemo \
+     figlet \
+     lolcat \
+     pbcopy \
+     tree \
+     tmux
 
 # fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf

@@ -63,18 +63,18 @@ This function should only modify configuration layer settings."
    ;; `:location' property: '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages '(
-     auto-save-buffers-enhanced
-     key-chord
-     darkroom
-     yafolding
-     all-the-icons-dired
-     git-gutter
-     flyspell-correct
-     migemo
-     doom-themes
-     beacon
-     (point-history :location (recipe :fetcher github :repo "blue0513/point-history"))
-   )
+                                      auto-save-buffers-enhanced
+                                      key-chord
+                                      darkroom
+                                      yafolding
+                                      all-the-icons-dired
+                                      git-gutter
+                                      flyspell-correct
+                                      migemo
+                                      doom-themes
+                                      beacon
+                                      (point-history :location (recipe :fetcher github :repo "blue0513/point-history"))
+                                      )
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -541,7 +541,7 @@ default it calls `spacemacs/load-spacemacs-env' which loads the environment
 variables declared in `~/.spacemacs.env' or `~/.spacemacs.d/.spacemacs.env'.
 See the header of this file for more information."
   (spacemacs/load-spacemacs-env)
-)
+  )
 
 (defun dotspacemacs/user-init ()
   "Initialization for user code:
@@ -549,7 +549,7 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
-)
+  )
 
 
 (defun dotspacemacs/user-load ()
@@ -557,7 +557,7 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
 This function is called only while dumping Spacemacs configuration. You can
 `require' or `load' the libraries of your choice that will be included in the
 dump."
-)
+  )
 (defun dotspacemacs/user-config ()
   "Configuration for user code:
 This function is called at the very end of Spacemacs startup, after layer
@@ -618,6 +618,8 @@ before packages are loaded."
   (menu-bar-mode -1)
 
   (setq-default indent-tabs-mode nil)
+
+  (setq dired-listing-switches "-alh" )
 
   ;; =================================================
   ;; key-bind
@@ -696,7 +698,7 @@ before packages are loaded."
                ("j"   . cua-set-mark)
                ;; copy
                ("c"   . cua-copy-region)
-    ))
+               ))
   (apply-emacs-keybind-to-evil evil-normal-state-map)
   (apply-emacs-keybind-to-evil evil-motion-state-map)
 
@@ -826,7 +828,7 @@ before packages are loaded."
 
   ;; lsp
   (setq read-process-output-max (* 1024 1024)) ;; 1mb
-)
+  )
 
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -836,24 +838,24 @@ before packages are loaded."
 This is an auto-generated function, do not modify its content directly, use
 Emacs customize menu instead.
 This function is called at the very end of Spacemacs initialization."
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(electric-pair-mode t)
- '(evil-want-Y-yank-to-eol nil)
- '(git-gutter:added-sign "+")
- '(git-gutter:deleted-sign "-")
- '(git-gutter:modified-sign "+")
- '(git-gutter:window-width 1)
- '(package-selected-packages
-   '(journalctl-mode tern beacon point-history toml-mode ron-mode racer rust-mode flycheck-rust lsp-docker cargo csv-mode helm-gtags ggtags counsel-gtags company-lua lua-mode yaml-mode mmm-mode markdown-toc gh-md web-mode tagedit slim-mode scss-mode sass-mode pug-mode impatient-mode htmlize helm-css-scss haml-mode emmet-mode counsel-css counsel swiper ivy company-web web-completion-data add-node-modules-path tide typescript-mode web-beautify rjsx-mode prettier-js npm-mode nodejs-repl livid-mode skewer-mode simple-httpd json-reformat json-navigator hierarchy json-mode json-snatcher js2-refactor multiple-cursors js2-mode js-doc dap-mode bui helm-migemo yasnippet-snippets yafolding ws-butler writeroom-mode winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package undo-tree treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired treemacs-evil toc-org symon symbol-overlay string-inflection string-edit spaceline-all-the-icons smeargle restart-emacs request rainbow-delimiters quickrun popwin pcre2el password-generator paradox overseer org-superstar open-junk-file nameless multi-line migemo macrostep lsp-ui lsp-treemacs lsp-origami lorem-ipsum link-hint key-chord inspector info+ indent-guide hybrid-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org helm-mode-manager helm-make helm-lsp helm-ls-git helm-git-grep helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gitignore-templates git-timemachine git-modes git-messenger git-link git-gutter fuzzy forge font-lock+ flycheck-pos-tip flycheck-package flycheck-elsa flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-terminal-cursor-changer evil-surround evil-numbers evil-nerd-commenter evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-easymotion evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu emr elisp-slime-nav elisp-def editorconfig dumb-jump drag-stuff dotenv-mode doom-themes diminish devdocs define-word darkroom column-enforce-mode clean-aindent-mode centered-cursor-mode auto-yasnippet auto-save-buffers-enhanced auto-highlight-symbol auto-compile all-the-icons-dired aggressive-indent ace-link ace-jump-helm-line ac-ispell))
- '(warning-suppress-types '((comp) ((evil-collection)))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(highlight-parentheses-highlight ((nil (:weight ultra-bold))) t))
-)
+  (custom-set-variables
+   ;; custom-set-variables was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(electric-pair-mode t)
+   '(evil-want-Y-yank-to-eol nil)
+   '(git-gutter:added-sign "+")
+   '(git-gutter:deleted-sign "-")
+   '(git-gutter:modified-sign "+")
+   '(git-gutter:window-width 1)
+   '(package-selected-packages
+     '(journalctl-mode tern beacon point-history toml-mode ron-mode racer rust-mode flycheck-rust lsp-docker cargo csv-mode helm-gtags ggtags counsel-gtags company-lua lua-mode yaml-mode mmm-mode markdown-toc gh-md web-mode tagedit slim-mode scss-mode sass-mode pug-mode impatient-mode htmlize helm-css-scss haml-mode emmet-mode counsel-css counsel swiper ivy company-web web-completion-data add-node-modules-path tide typescript-mode web-beautify rjsx-mode prettier-js npm-mode nodejs-repl livid-mode skewer-mode simple-httpd json-reformat json-navigator hierarchy json-mode json-snatcher js2-refactor multiple-cursors js2-mode js-doc dap-mode bui helm-migemo yasnippet-snippets yafolding ws-butler writeroom-mode winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package undo-tree treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired treemacs-evil toc-org symon symbol-overlay string-inflection string-edit spaceline-all-the-icons smeargle restart-emacs request rainbow-delimiters quickrun popwin pcre2el password-generator paradox overseer org-superstar open-junk-file nameless multi-line migemo macrostep lsp-ui lsp-treemacs lsp-origami lorem-ipsum link-hint key-chord inspector info+ indent-guide hybrid-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-org helm-mode-manager helm-make helm-lsp helm-ls-git helm-git-grep helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gitignore-templates git-timemachine git-modes git-messenger git-link git-gutter fuzzy forge font-lock+ flycheck-pos-tip flycheck-package flycheck-elsa flx-ido fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-terminal-cursor-changer evil-surround evil-numbers evil-nerd-commenter evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-easymotion evil-collection evil-cleverparens evil-args evil-anzu eval-sexp-fu emr elisp-slime-nav elisp-def editorconfig dumb-jump drag-stuff dotenv-mode doom-themes diminish devdocs define-word darkroom column-enforce-mode clean-aindent-mode centered-cursor-mode auto-yasnippet auto-save-buffers-enhanced auto-highlight-symbol auto-compile all-the-icons-dired aggressive-indent ace-link ace-jump-helm-line ac-ispell))
+   '(warning-suppress-types '((comp) ((evil-collection)))))
+  (custom-set-faces
+   ;; custom-set-faces was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(highlight-parentheses-highlight ((nil (:weight ultra-bold))) t))
+  )
