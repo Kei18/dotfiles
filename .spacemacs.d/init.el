@@ -71,7 +71,7 @@ This function should only modify configuration layer settings."
                                       git-gutter
                                       flyspell-correct
                                       migemo
-                                      doom-themes
+                                      (doom-themes :location (recipe :fetcher github :repo "doomemacs/themes"))
                                       beacon
                                       (point-history :location (recipe :fetcher github :repo "blue0513/point-history"))
                                       )
