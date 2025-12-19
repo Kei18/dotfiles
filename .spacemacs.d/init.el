@@ -857,5 +857,7 @@ This function is called at the very end of Spacemacs initialization."
    ;; If you edit it by hand, you could mess it up, so be careful.
    ;; Your init file should contain only one such instance.
    ;; If there is more than one, they won't work right.
+   '(flyspell-duplicate ((t (:inherit bold :background "gray5" :foreground "#b2b2b2" :underline (:color "#f1fa8c" :style wave :position nil)))))
+   '(flyspell-incorrect ((t (:inherit bold :background "gray5" :foreground "#b2b2b2" :underline (:color "#ff5555" :style wave :position nil)))))
    '(highlight-parentheses-highlight ((nil (:weight ultra-bold))) t))
   )
