@@ -642,59 +642,73 @@ before packages are loaded."
   (bind-key "C-M-<up>" 'enlarge-window)
   (bind-key "C-M-<down>" 'shrink-window)
 
-  ;; window
-  (defun apply-emacs-keybind-to-evil (mode)
-    (bind-keys :map mode
-               ;; cursor
-               ("C-a" . move-beginning-of-line)
-               ("C-e" . move-end-of-line)
-               ("C-p" . previous-line)
-               ("C-n" . next-line)
-               ("C-f" . forward-char)
-               ("C-b" . backward-char)
-               ("C-o" . goto-matching-paren)
-               ("C-l"   . recenter-top-bottom)
+  (dolist (map (list evil-normal-state-map evil-motion-state-map))
+    (define-key map (kbd "C-a") #'move-beginning-of-line)
+    (define-key map (kbd "C-e") #'move-end-of-line)
+    (define-key map (kbd "C-p") #'previous-line)
+    (define-key map (kbd "C-n") #'next-line)
+    (define-key map (kbd "C-f") #'forward-char)
+    (define-key map (kbd "C-b") #'backward-char)
+    (define-key map (kbd "C-o") #'goto-matching-paren)
+    (define-key map (kbd "C-l") #'recenter-top-bottom)
 
-               ("a"   . move-beginning-of-line)
-               ("e"   . move-end-of-line)
-               ("p"   . previous-line)
-               ("n"   . next-line)
-               ("f"   . evil-forward-word-begin)
-               ("b"   . evil-backward-word-begin)
-               ("o"   . goto-matching-paren)
-               ("l"   . recenter-top-bottom)
-               ("]"   . forward-page)
-               ("["   . backward-page)
+    (define-key map (kbd "a") #'move-beginning-of-line)
+    (define-key map (kbd "e") #'move-end-of-line)
+    (define-key map (kbd "p") #'previous-line)
+    (define-key map (kbd "n") #'next-line)
+    (define-key map (kbd "f") #'evil-forward-word-begin)
+    (define-key map (kbd "b") #'evil-backward-word-begin)
+    (define-key map (kbd "o") #'goto-matching-paren)
+    (define-key map (kbd "l") #'recenter-top-bottom)
+    (define-key map (kbd "]") #'forward-page)
+    (define-key map (kbd "[") #'backward-page)
 
-               ;; window
-               ("SPC w ;" . evil-window-right)
-               ("SPC w j" . evil-window-left)
-               ("SPC w k" . evil-window-down)
-               ("SPC w l" . evil-window-up)
-               ("SPC w r" . split-window-right)
-               ("SPC w b" . split-window-below)
+    (define-key map (kbd "s") #'isearch-forward)
+    (define-key map (kbd "r") #'isearch-backward)
+    (define-key map (kbd "C-s") #'isearch-forward)
+    (define-key map (kbd "C-r") #'isearch-backward)
 
-               ;; search
-               ("s" . isearch-forward)
-               ("r" . isearch-backward)
-               ("C-s" . isearch-forward)
-               ("C-r" . isearch-backward)
-               ;; mark
-               ("j"   . cua-set-mark)
-               ;; copy
-               ("c"   . cua-copy-region)
-               ))
-  (apply-emacs-keybind-to-evil evil-normal-state-map)
-  (apply-emacs-keybind-to-evil evil-motion-state-map)
+    (define-key map (kbd "j") #'cua-set-mark)
+    (define-key map (kbd "c") #'cua-copy-region))
+
+  (evil-define-key '(normal motion) dired-mode-map
+    (kbd "C-a") #'move-beginning-of-line
+    (kbd "C-e") #'move-end-of-line
+    (kbd "C-p") #'previous-line
+    (kbd "C-n") #'next-line
+    (kbd "C-f") #'forward-char
+    (kbd "C-b") #'backward-char
+    (kbd "C-l") #'recenter-top-bottom
+
+    (kbd "a") #'move-beginning-of-line
+    (kbd "e") #'move-end-of-line
+    (kbd "p") #'previous-line
+    (kbd "n") #'next-line
+    (kbd "f") #'evil-forward-word-begin
+    (kbd "b") #'evil-backward-word-begin
+    (kbd "o") #'goto-matching-paren
+    (kbd "l") #'recenter-top-bottom
+    (kbd "]") #'forward-page
+    (kbd "[") #'backward-page
+
+    (kbd "s") #'isearch-forward
+    (kbd "r") #'isearch-backward
+    (kbd "C-s") #'isearch-forward
+    (kbd "C-r") #'isearch-backward
+
+    (kbd "j") #'cua-set-mark
+    (kbd "c") #'cua-copy-region)
+
+  (spacemacs/set-leader-keys
+    "w;" #'evil-window-right
+    "wj" #'evil-window-left
+    "wk" #'evil-window-down
+    "wl" #'evil-window-up
+    "wr" #'split-window-right
+    "wb" #'split-window-below)
 
   ;; general
   (evil-define-key 'normal dired-mode-map "g" 'revert-buffer)
-  (evil-define-key 'normal dired-mode-map "n" 'next-line)
-  (evil-define-key 'normal dired-mode-map "s" 'isearch-forward)
-  (evil-define-key 'normal dired-mode-map "r" 'isearch-backward)
-  (evil-define-key 'normal dired-mode-map "j" 'cua-set-mark)
-  (evil-define-key 'normal dired-mode-map "[" 'backward-page)
-  (evil-define-key 'normal dired-mode-map "]" 'forward-page)
   (define-key evil-motion-state-map (kbd "RET") nil)
 
   (require 'markdown-mode)
