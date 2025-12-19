@@ -70,7 +70,6 @@ This function should only modify configuration layer settings."
                                       all-the-icons-dired
                                       git-gutter
                                       flyspell-correct
-                                      migemo
                                       (doom-themes :location (recipe :fetcher github :repo "doomemacs/themes"))
                                       beacon
                                       (point-history :location (recipe :fetcher github :repo "blue0513/point-history"))
@@ -791,20 +790,6 @@ before packages are loaded."
             (lambda ()
               (define-key flyspell-mode-map (kbd "M-<down>") 'flyspell-correct-wrapper)))
 
-
-  ;; search
-  (require 'migemo)
-  (setq migemo-command "cmigemo")
-  (setq migemo-options '("-q" "--emacs"))
-  (when (eq system-type 'gnu/linux)
-    (setq migemo-dictionary "/home/okumura/.linuxbrew/share/migemo/utf-8/migemo-dict"))
-  (when (eq system-type 'darwin)
-    (setq migemo-dictionary "/opt/homebrew/Cellar/cmigemo/20110227/share/migemo/utf-8/migemo-dict"))
-  (setq migemo-user-dictionary nil)
-  (setq migemo-regex-dictionary nil)
-  (setq migemo-coding-system 'utf-8-unix)
-  (migemo-init)
-
   ;; code-jump
   (bind-key "C-x C-j" 'xref-find-references)
   (bind-key "C-x C-h" 'xref-pop-marker-stack)
@@ -816,6 +801,7 @@ before packages are loaded."
   (require 'tramp)
   ;; (setq enable-remote-dir-t locals)
   (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
+  (setq tramp-verbose 6)
 
   ;; =================================================
   ;; language
