@@ -462,7 +462,7 @@ It should only modify the values of Spacemacs settings."
    ;; List of search tool executable names. Spacemacs uses the first installed
    ;; tool of the list. Supported tools are `rg', `ag', `pt', `ack' and `grep'.
    ;; (default '("rg" "ag" "pt" "ack" "grep"))
-   dotspacemacs-search-tools '("rg" "ag" "pt" "ack" "grep")
+   dotspacemacs-search-tools '("rg" "ag" "ack" "grep")
 
    ;; Format specification for setting the frame title.
    ;; %a - the `abbreviated-file-name', or `buffer-name'
@@ -574,21 +574,7 @@ before packages are loaded."
                               (height . (text-pixels . 900))))
 
   (require 'doom-themes)
-  ;; Global settings (defaults)
-  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-        doom-themes-enable-italic t) ; if nil, italics is universally disabled
-  ;; Load the theme (doom-one, doom-molokai, etc); keep in mind that each theme
-  ;; may have their own settings.
-  (load-theme 'doom-dracula t)
-  ;; Enable flashing mode-line on errors
-  (doom-themes-visual-bell-config)
-  ;; Enable custom neotree theme (all-the-icons must be installed!)
-  (doom-themes-neotree-config)
-  ;; or for treemacs users
-  (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
-  (doom-themes-treemacs-config)
-  ;; Corrects (and improves) org-mode's native fontification.
-  (doom-themes-org-config)
+  (setq doom-theme 'doom-dracula)
 
   (set-face-background 'hl-line "grey5")
 
@@ -745,13 +731,6 @@ before packages are loaded."
 
   (bind-key "C-<tab>" 'yas-expand)
   (bind-key "C-h" 'point-history-show)
-
-  ;; (require 'yafolding)
-  ;; (define-key yafolding-mode-map (kbd "<C-S-return>") nil)
-  ;; (define-key yafolding-mode-map (kbd "<C-M-return>") nil)
-  ;; (define-key yafolding-mode-map (kbd "<C-return>") nil)
-  ;; (key-chord-define-global "zz" 'yafolding-toggle-element)
-  ;; (add-hook 'prog-mode-hook 'yafolding-mode-map)
 
   ;; =================================================
   ;; function
