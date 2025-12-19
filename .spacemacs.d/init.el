@@ -70,7 +70,6 @@ This function should only modify configuration layer settings."
                                       all-the-icons-dired
                                       git-gutter
                                       flyspell-correct
-                                      (doom-themes :location (recipe :fetcher github :repo "doomemacs/themes"))
                                       beacon
                                       (point-history :location (recipe :fetcher github :repo "blue0513/point-history"))
                                       )
@@ -239,7 +238,8 @@ It should only modify the values of Spacemacs settings."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-dark
+   dotspacemacs-themes '(doom-dracula
+                         spacemacs-dark
                          spacemacs-light)
 
    ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
@@ -557,6 +557,103 @@ This function is called only while dumping Spacemacs configuration. You can
 `require' or `load' the libraries of your choice that will be included in the
 dump."
   )
+
+(defconst kei18/global-keybindings
+  '(("M-z" . undo)
+    ("M-v" . cua-paste)
+    ("C-x C-b" . bs-show)
+    ("C-r" . isearch-backward)
+    ("C-o" . goto-matching-paren)
+    ("M-n" . next-line-ten)
+    ("M-p" . previous-line-ten)
+    ("C-M-<right>" . enlarge-window-horizontally)
+    ("C-M-<left>" . shrink-window-horizontally)
+    ("C-M-<up>" . enlarge-window)
+    ("C-M-<down>" . shrink-window)
+    ("C-<tab>" . yas-expand)
+    ("C-h" . point-history-show)))
+
+(defconst kei18/evil-motion-normal-bindings
+  '(("C-a" . move-beginning-of-line)
+    ("C-e" . move-end-of-line)
+    ("C-p" . previous-line)
+    ("C-n" . next-line)
+    ("C-f" . forward-char)
+    ("C-b" . backward-char)
+    ("C-o" . goto-matching-paren)
+    ("C-l" . recenter-top-bottom)
+    ("a" . move-beginning-of-line)
+    ("e" . move-end-of-line)
+    ("p" . previous-line)
+    ("n" . next-line)
+    ("f" . evil-forward-word-begin)
+    ("b" . evil-backward-word-begin)
+    ("o" . goto-matching-paren)
+    ("l" . recenter-top-bottom)
+    ("]" . forward-page)
+    ("[" . backward-page)
+    ("s" . isearch-forward)
+    ("r" . isearch-backward)
+    ("C-s" . isearch-forward)
+    ("C-r" . isearch-backward)
+    ("j" . cua-set-mark)
+    ("c" . cua-copy-region)))
+
+(defconst kei18/evil-motion-normal-clear-keys '("g" "z" "x"))
+
+(defconst kei18/evil-motion-git-gutter-bindings
+  '(("z" . git-gutter:next-hunk)
+    ("x" . git-gutter:previous-hunk)))
+
+(defun set-alpha (alpha-num)
+  (interactive "nAlpha: ")
+  (set-frame-parameter nil 'alpha (cons alpha-num '(90))))
+
+(defun goto-matching-paren ()
+  "go to matching parenthesis"
+  (interactive)
+  (let ((c (following-char))
+        (p (preceding-char)))
+    (if (eq (char-syntax c) 40) (forward-list)
+      (if (eq (char-syntax p) 41) (backward-list)
+        (backward-up-list)))))
+
+(defun repeat-n-times (f n)
+  (cond ((<= n 1) (funcall f))
+        ((> n 1) (funcall f) (repeat-n-times f (- n 1)))))
+
+(defun next-line-n (n) (repeat-n-times #'next-line n))
+(defun next-line-ten () (interactive) (next-line-n 10))
+(defun previous-line-n (n) (repeat-n-times #'previous-line n))
+(defun previous-line-ten () (interactive) (previous-line-n 10))
+
+(defun mark-line ()
+  (move-beginning-of-line nil)
+  (cua-set-mark nil)
+  (move-end-of-line nil))
+(defun mark-line-text () (interactive) (mark-line))
+(defun comment-dwin-line () (interactive) (mark-line) (comment-dwim nil))
+
+(defun spacemacs/layout-quad-columns ()
+  "Set the layout to quad columns."
+  (interactive)
+  (delete-other-windows)
+  (dotimes (i 3) (split-window-right))
+  (balance-windows))
+
+(defun kei18/apply-evil-bindings ()
+  (dolist (map (list evil-normal-state-map evil-motion-state-map))
+    (dolist (binding kei18/evil-motion-normal-bindings)
+      (define-key map (kbd (car binding)) (cdr binding))))
+  (dolist (binding kei18/evil-motion-normal-bindings)
+    (evil-define-key '(normal motion) dired-mode-map
+      (kbd (car binding)) (cdr binding)))
+  (dolist (key kei18/evil-motion-normal-clear-keys)
+    (define-key evil-normal-state-map (kbd key) nil)
+    (define-key evil-motion-state-map (kbd key) nil))
+  (dolist (binding kei18/evil-motion-git-gutter-bindings)
+    (define-key evil-motion-state-map (kbd (car binding)) (cdr binding))))
+
 (defun dotspacemacs/user-config ()
   "Configuration for user code:
 This function is called at the very end of Spacemacs startup, after layer
@@ -573,17 +670,10 @@ before packages are loaded."
   (setq initial-frame-alist '((width . (text-pixels . 1200))
                               (height . (text-pixels . 900))))
 
-  (require 'doom-themes)
-  (setq doom-theme 'doom-dracula)
-
   (set-face-background 'hl-line "grey5")
 
   (set-frame-parameter (selected-frame) 'alpha '(0.95))
   (setq inhibit-startup-screen t)
-  (defun set-alpha (alpha-num)
-    (interactive "nAlpha: ")
-    (set-frame-parameter nil 'alpha (cons alpha-num '(90))))
-
   (set-face-attribute 'isearch nil :foreground "black" :background "green")
   (set-face-attribute 'lazy-highlight nil :foreground "black" :background "#00796B")
 
@@ -604,100 +694,18 @@ before packages are loaded."
 
   (setq-default indent-tabs-mode nil)
 
-  (setq dired-listing-switches "-alh" )
+  (setq dired-listing-switches "-alh")
 
   ;; =================================================
   ;; key-bind
   ;; =================================================
   (when (eq system-type 'darwin)
     (setq mac-command-modifier 'meta))
-  (bind-key "M-z" 'undo)
-  (bind-key "M-v" 'cua-paste)
-  (bind-key "C-x C-b" 'bs-show)
+  (dolist (binding kei18/global-keybindings)
+    (bind-key (car binding) (cdr binding)))
   (add-hook 'bs-mode-hook (lambda () (turn-off-evil-mode)))
 
-  (bind-key "C-r" 'isearch-backward)
-
-  (defun goto-matching-paren()
-    "go to matching parenthesis"
-    (interactive)
-    (let ((c (following-char))
-          (p (preceding-char)))
-      (if (eq (char-syntax c) 40) (forward-list)
-        (if (eq (char-syntax p) 41) (backward-list)
-          (backward-up-list)))))
-  (bind-key "C-o" 'goto-matching-paren)
-
-  (defun repeat-n-times (f n)
-    (cond ((<= n 1) (funcall f))
-          ((> n 1) (funcall f) (repeat-n-times f (- n 1)))))
-  (defun next-line-n (n) (repeat-n-times #'next-line n))
-  (defun next-line-ten() (interactive) (next-line-n 10))
-  (defun previous-line-n(n) (repeat-n-times #'previous-line n))
-  (defun previous-line-ten() (interactive) (previous-line-n 10))
-  (bind-key "M-n" 'next-line-ten)
-  (bind-key "M-p" 'previous-line-ten)
-  (bind-key "C-M-<right>" 'enlarge-window-horizontally)
-  (bind-key "C-M-<left>" 'shrink-window-horizontally)
-  (bind-key "C-M-<up>" 'enlarge-window)
-  (bind-key "C-M-<down>" 'shrink-window)
-
-  (dolist (map (list evil-normal-state-map evil-motion-state-map))
-    (define-key map (kbd "C-a") #'move-beginning-of-line)
-    (define-key map (kbd "C-e") #'move-end-of-line)
-    (define-key map (kbd "C-p") #'previous-line)
-    (define-key map (kbd "C-n") #'next-line)
-    (define-key map (kbd "C-f") #'forward-char)
-    (define-key map (kbd "C-b") #'backward-char)
-    (define-key map (kbd "C-o") #'goto-matching-paren)
-    (define-key map (kbd "C-l") #'recenter-top-bottom)
-
-    (define-key map (kbd "a") #'move-beginning-of-line)
-    (define-key map (kbd "e") #'move-end-of-line)
-    (define-key map (kbd "p") #'previous-line)
-    (define-key map (kbd "n") #'next-line)
-    (define-key map (kbd "f") #'evil-forward-word-begin)
-    (define-key map (kbd "b") #'evil-backward-word-begin)
-    (define-key map (kbd "o") #'goto-matching-paren)
-    (define-key map (kbd "l") #'recenter-top-bottom)
-    (define-key map (kbd "]") #'forward-page)
-    (define-key map (kbd "[") #'backward-page)
-
-    (define-key map (kbd "s") #'isearch-forward)
-    (define-key map (kbd "r") #'isearch-backward)
-    (define-key map (kbd "C-s") #'isearch-forward)
-    (define-key map (kbd "C-r") #'isearch-backward)
-
-    (define-key map (kbd "j") #'cua-set-mark)
-    (define-key map (kbd "c") #'cua-copy-region))
-
-  (evil-define-key '(normal motion) dired-mode-map
-    (kbd "C-a") #'move-beginning-of-line
-    (kbd "C-e") #'move-end-of-line
-    (kbd "C-p") #'previous-line
-    (kbd "C-n") #'next-line
-    (kbd "C-f") #'forward-char
-    (kbd "C-b") #'backward-char
-    (kbd "C-l") #'recenter-top-bottom
-
-    (kbd "a") #'move-beginning-of-line
-    (kbd "e") #'move-end-of-line
-    (kbd "p") #'previous-line
-    (kbd "n") #'next-line
-    (kbd "f") #'evil-forward-word-begin
-    (kbd "b") #'evil-backward-word-begin
-    (kbd "o") #'goto-matching-paren
-    (kbd "l") #'recenter-top-bottom
-    (kbd "]") #'forward-page
-    (kbd "[") #'backward-page
-
-    (kbd "s") #'isearch-forward
-    (kbd "r") #'isearch-backward
-    (kbd "C-s") #'isearch-forward
-    (kbd "C-r") #'isearch-backward
-
-    (kbd "j") #'cua-set-mark
-    (kbd "c") #'cua-copy-region)
+  (kei18/apply-evil-bindings)
 
   (spacemacs/set-leader-keys
     "w;" #'evil-window-right
@@ -717,13 +725,6 @@ before packages are loaded."
              ("M-n" . next-line-ten)
              )
 
-  (defun mark-line()
-    (move-beginning-of-line nil)
-    (cua-set-mark nil)
-    (move-end-of-line nil))
-  (defun mark-line-text() (interactive) (mark-line))
-  (defun comment-dwin-line() (interactive) (mark-line) (comment-dwim nil))
-
   (setq evil-escape-unordered-key-sequence t)
   (setq evil-escape-key-sequence "fj")
   (define-key evil-motion-state-map ";" 'comment-dwin-line)
@@ -733,33 +734,12 @@ before packages are loaded."
   (define-key evil-motion-state-map "k" 'kill-whole-line)
   (define-key evil-normal-state-map "h" 'save-buffer)
 
-  (define-key evil-normal-state-map "g" nil)
-  (define-key evil-motion-state-map "g" nil)
-  (define-key evil-normal-state-map "z" nil)
-  (define-key evil-motion-state-map "z" nil)
-  (define-key evil-normal-state-map "x" nil)
-  (define-key evil-motion-state-map "x" nil)
-
-  (define-key evil-motion-state-map "z" 'git-gutter:next-hunk)
-  (define-key evil-motion-state-map "x" 'git-gutter:previous-hunk)
-
-  (bind-key "C-<tab>" 'yas-expand)
-  (bind-key "C-h" 'point-history-show)
-
   ;; =================================================
   ;; function
   ;; =================================================
 
   ;; copy and paste
   (setq x-select-enable-clipboard t)
-
-  ;; split window
-  (defun spacemacs/layout-quad-columns ()
-    " Set the layout to triple columns. "
-    (interactive)
-    (delete-other-windows)
-    (dotimes (i 3) (split-window-right))
-    (balance-windows))
 
   (spacemacs/set-leader-keys
     "w4" 'spacemacs/layout-quad-columns)
@@ -770,8 +750,8 @@ before packages are loaded."
 
   ;; spell check
   (setq-default ispell-program-name "aspell")
-  (eval-after-load "ispell"
-    '(add-to-list 'ispell-skip-region-alist '("[^\000-\377]+")))
+  (with-eval-after-load "ispell"
+    (add-to-list 'ispell-skip-region-alist '("[^\000-\377]+")))
   (mapc
    (lambda (hook)
      (add-hook hook
