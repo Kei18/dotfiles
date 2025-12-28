@@ -56,7 +56,11 @@ setopt +o nomatch
 # ailas
 alias l='eza -a -l'
 alias cat='bat'
-alias e="emacsclient -t -a ''"
+unalias e 2>/dev/null
+e() {
+    emacsclient -t -a '' "$@"
+    cursor_block
+}
 alias j='jupyter lab'
 if command -v open >/dev/null 2>&1; then
     alias o='open ./'
