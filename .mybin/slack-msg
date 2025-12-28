@@ -1,7 +1,0 @@
-#!/bin/sh
-msg=$@
-curl -X POST 'https://slack.com/api/chat.postMessage' \
-     -d token=${SLACK_TOKEN} \
-     -d channel=#notification \
-     -d "text=$msg" \
-     > /dev/null 2>&1

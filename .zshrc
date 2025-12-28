@@ -2,8 +2,6 @@
 # Executes commands at the start of an interactive session.
 #
 
-alias l='ls -all -l'
-
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
@@ -60,7 +58,11 @@ alias l='eza -a -l'
 alias cat='bat'
 alias e="emacsclient -t -a ''"
 alias j='jupyter lab'
-alias o='open ./'
+if command -v open >/dev/null 2>&1; then
+    alias o='open ./'
+elif command -v xdg-open >/dev/null 2>&1; then
+    alias o='xdg-open ./'
+fi
 alias gs='git status'
 alias ga='git add'
 alias gp='git push'
@@ -69,7 +71,6 @@ gm () {
     msg=$@
     git commit -m "$msg"
 }
-alias gd='git diff'
 alias rebuild='cd ..;rm -rf build; mkdir build; cd build; cmake ..; make'
 alias m='make'
 alias mb='make -C build'
@@ -124,9 +125,12 @@ function yy() {
         builtin cd -- "$cwd"
     fi
     rm -f -- "$tmp"
-    echo -ne "\e[4 q"
+    cursor_block
 }
-echo -ne "\e[4 q"  # not sure this is correct...
+
+# display setting
+cursor_block() { echo -ne "\e[4 q"; }
+cursor_block
 
 # latex
 alias lmk='latexmk --pvc'
@@ -138,10 +142,17 @@ fi
 
 # additional commands
 export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.mybin/:$PATH"
+
+if command -v mise >/dev/null 2>&1; then
+    eval "$(mise activate zsh)"
+    fzf_dir="$(mise where fzf 2>/dev/null || true)"
+    if [[ -n "$fzf_dir" ]]; then
+        [ -f "$fzf_dir/shell/completion.zsh" ] && source "$fzf_dir/shell/completion.zsh"
+        [ -f "$fzf_dir/shell/key-bindings.zsh" ] && source "$fzf_dir/shell/key-bindings.zsh"
+    fi
+fi
 
 eval "$(zoxide init zsh)"
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # starship
 export STARSHIP_CONFIG=~/.starship.toml

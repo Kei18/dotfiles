@@ -1,9 +1,0 @@
-#!/bin/sh
-cat $1 |
-    tr -d "$" |
-    sed -e 's/\\begin.*\}//g' -e 's/\\end.*\}//g' |
-    sed -e 's/\\.*{//g' -e 's/\}//g' |
-    sed -e 's/  //g' |
-    sed -e '/^$/d' |  # delete empty line
-    tr '\n' ' ' |     # delete line break
-    sed -e 's/ $//g'

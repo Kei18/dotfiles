@@ -11,8 +11,10 @@ chsh -s $(which zsh)
 ```sh
 git clone --recursive https://github.com/Kei18/dotfiles $HOME/dotfiles
 cd dotfiles
-bash ./install_xx.sh
+bash ./install.sh
 ```
+
+- `mise` is used to install `fzf` (and can be extended for other tools).
 
 ## ssh login
 

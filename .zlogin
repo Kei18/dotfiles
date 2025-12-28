@@ -22,5 +22,9 @@ if (( $+commands[fortune] )); then
     fi
 fi
 
-welcome_msg="This is "`whoami`" @ "`hostname`
-echo -e "\e[36m`figlet ${welcome_msg}`\e[0m"
+welcome_msg="This is $(whoami) @ $(hostname)"
+if command -v figlet >/dev/null 2>&1; then
+    echo -e "\e[36m$(figlet "${welcome_msg}")\e[0m"
+else
+    echo "${welcome_msg}"
+fi
