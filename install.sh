@@ -99,6 +99,7 @@ install_os_packages() {
         brew install \
             ag \
             aspell \
+            cmigemo \
             figlet \
             tree \
             tmux
@@ -108,12 +109,12 @@ install_os_packages() {
     if is_linux && command -v apt-get >/dev/null 2>&1; then
         if [[ "$(id -u)" == "0" ]]; then
             apt-get update -y
-            apt-get install -y tmux figlet tree
+            apt-get install -y tmux figlet tree cmigemo migemo-dict
         elif command -v sudo >/dev/null 2>&1; then
             sudo apt-get update -y
-            sudo apt-get install -y tmux figlet tree
+            sudo apt-get install -y tmux figlet tree cmigemo migemo-dict
         else
-            echo "warning: skipping apt packages (tmux/figlet/tree) because sudo is unavailable." >&2
+            echo "warning: skipping apt packages (tmux/figlet/tree/cmigemo/migemo-dict) because sudo is unavailable." >&2
         fi
     fi
 }

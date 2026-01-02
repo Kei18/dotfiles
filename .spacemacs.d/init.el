@@ -66,6 +66,7 @@ This function should only modify configuration layer settings."
                                       auto-save-buffers-enhanced
                                       key-chord
                                       darkroom
+                                      migemo
                                       yafolding
                                       all-the-icons-dired
                                       git-gutter
@@ -654,6 +655,18 @@ dump."
   (dolist (binding kei18/evil-motion-git-gutter-bindings)
     (define-key evil-motion-state-map (kbd (car binding)) (cdr binding))))
 
+(defun kei18/find-migemo-dictionary ()
+  "Return the first readable migemo dictionary path."
+  (let ((candidates '("/opt/homebrew/share/migemo/utf-8/migemo-dict"
+                      "/usr/local/share/migemo/utf-8/migemo-dict"
+                      "/usr/share/migemo/utf-8/migemo-dict"
+                      "/usr/local/share/migemo/migemo-dict"
+                      "/usr/share/migemo/migemo-dict")))
+    (catch 'found
+      (dolist (path candidates)
+        (when (file-readable-p path)
+          (throw 'found path))))))
+
 (defun dotspacemacs/user-config ()
   "Configuration for user code:
 This function is called at the very end of Spacemacs startup, after layer
@@ -733,6 +746,19 @@ before packages are loaded."
   (define-key evil-motion-state-map "w" 'undo-tree-redo)
   (define-key evil-motion-state-map "k" 'kill-whole-line)
   (define-key evil-normal-state-map "h" 'save-buffer)
+
+  ;; migemo
+  (when (require 'migemo nil t)
+    (setq migemo-command (or (executable-find "cmigemo")
+                             (executable-find "migemo"))
+          migemo-options '("-q" "--emacs")
+          migemo-dictionary (kei18/find-migemo-dictionary)
+          migemo-user-dictionary nil
+          migemo-regex-dictionary nil
+          migemo-coding-system 'utf-8-unix)
+    (when (and migemo-command migemo-dictionary)
+      (migemo-init)
+      (migemo-isearch-enable)))
 
   ;; =================================================
   ;; function
