@@ -549,6 +549,9 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
+  (autoload 'cua-set-mark "cua-base" nil t)
+  (autoload 'cua-copy-region "cua-base" nil t)
+  (autoload 'cua-paste "cua-base" nil t)
   )
 
 
