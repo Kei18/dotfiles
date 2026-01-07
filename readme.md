@@ -3,6 +3,7 @@ Dotfiles
 
 Set zsh as your login shell:
 ```sh
+echo $SHELL
 chsh -s $(which zsh)
 ```
 
