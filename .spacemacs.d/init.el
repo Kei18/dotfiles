@@ -760,8 +760,7 @@ before packages are loaded."
           migemo-regex-dictionary nil
           migemo-coding-system 'utf-8-unix)
     (when (and migemo-command migemo-dictionary)
-      (migemo-init)
-      (migemo-isearch-enable)))
+      (migemo-init)))
 
   ;; =================================================
   ;; function

@@ -130,15 +130,32 @@ install_zsh_autosuggestions() {
     fi
 }
 
-touch "$HOME/.zshrc.local"
-deploy_dotfiles
-install_prezto
-install_tpm
-ensure_rustup
-ensure_mise
-install_cargo_tools
-install_os_packages
-install_fzf
-install_zsh_autosuggestions
+failures=()
+
+run_step() {
+    local name="$1"
+    shift
+
+    if ! "$@"; then
+        echo "warning: ${name} failed; continuing." >&2
+        failures+=("$name")
+    fi
+}
+
+run_step "touch_zshrc_local" touch "$HOME/.zshrc.local"
+run_step "deploy_dotfiles" deploy_dotfiles
+run_step "install_prezto" install_prezto
+run_step "install_tpm" install_tpm
+run_step "ensure_rustup" ensure_rustup
+run_step "ensure_mise" ensure_mise
+run_step "install_cargo_tools" install_cargo_tools
+run_step "install_os_packages" install_os_packages
+run_step "install_fzf" install_fzf
+run_step "install_zsh_autosuggestions" install_zsh_autosuggestions
+
+if ((${#failures[@]} > 0)); then
+    printf "installation done (with failures): %s\n" "${failures[*]}" >&2
+    exit 1
+fi
 
 echo "installation done"
