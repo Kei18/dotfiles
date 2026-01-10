@@ -81,10 +81,12 @@ install_cargo_tools() {
         dua-cli \
         ripgrep \
         ouch \
-        yazi-fm \
-        yazi-cli \
         htop \
         viddy
+}
+
+install_yazi() {
+    "$HOME/.cargo/bin/cargo" install --locked yazi-fm yazi-cli
 }
 
 ensure_brew() {
@@ -149,6 +151,7 @@ run_step "install_tpm" install_tpm
 run_step "ensure_rustup" ensure_rustup
 run_step "ensure_mise" ensure_mise
 run_step "install_cargo_tools" install_cargo_tools
+run_step "install_yazi" install_yazi
 run_step "install_os_packages" install_os_packages
 run_step "install_fzf" install_fzf
 run_step "install_zsh_autosuggestions" install_zsh_autosuggestions
