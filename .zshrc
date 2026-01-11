@@ -15,6 +15,10 @@ export LANG=en_US.UTF-8
 # auto complete
 autoload -Uz compinit
 compinit
+zmodload zsh/complist
+autoload -U colors && colors
+zstyle ':completion:*' menu select
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
 # command correction
 setopt correct
