@@ -1,0 +1,3 @@
+#!/bin/sh
+emacsclient -t -a '' "$@"
+echo -ne "\e[4 q"

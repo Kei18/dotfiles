@@ -17,6 +17,8 @@ autoload -Uz compinit
 compinit
 zmodload zsh/complist
 autoload -U colors && colors
+# completion colors (no red hues)
+export LS_COLORS="di=38;5;33:ln=36:so=35:pi=38;5;30:ex=38;5;40:bd=38;5;67:cd=38;5;67:su=38;5;220:sg=38;5;220:tw=38;5;109:ow=38;5;109"
 zstyle ':completion:*' menu select
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
@@ -25,6 +27,7 @@ setopt correct
 
 # emacs
 bindkey -e
+bindkey '^[[Z' reverse-menu-complete
 
 # no beep
 setopt nobeep
@@ -65,6 +68,7 @@ e() {
     emacsclient -t -a '' "$@"
     cursor_block
 }
+export EDITOR=$HOME/.local/bin/e
 alias j='jupyter lab'
 if command -v open >/dev/null 2>&1; then
     alias o='open ./'
