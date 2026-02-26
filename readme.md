@@ -41,6 +41,7 @@ ssh -T git@github.com
 
 - zsh
 - emacs
+- codex
 - tmux
 - htop
 - boost
