@@ -155,6 +155,16 @@ install_node() {
     "$HOME/.local/bin/mise" use -g node@lts
 }
 
+install_uv() {
+    "$HOME/.local/bin/mise" install uv@latest
+    "$HOME/.local/bin/mise" use -g uv@latest
+}
+
+install_codex() {
+    "$HOME/.local/bin/mise" install npm:@openai/codex@latest
+    "$HOME/.local/bin/mise" use -g npm:@openai/codex@latest
+}
+
 install_zsh_autosuggestions() {
     if [[ ! -d "$HOME/.zsh/zsh-autosuggestions" ]]; then
         git clone https://github.com/zsh-users/zsh-autosuggestions "$HOME/.zsh/zsh-autosuggestions"
@@ -187,6 +197,8 @@ run_step "install_tpm" install_tpm
 run_step "ensure_rustup" ensure_rustup
 run_step "ensure_mise" ensure_mise
 run_step "install_node" install_node
+run_step "install_uv" install_uv
+run_step "install_codex" install_codex
 run_step "install_cargo_tools" install_cargo_tools
 run_step "install_yazi" install_yazi
 run_step "install_os_packages" install_os_packages
