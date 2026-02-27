@@ -66,6 +66,12 @@ ensure_mise() {
     fi
 }
 
+ensure_dotfiles_origin_ssh() {
+    if [[ -d "$SCRIPT_DIR/.git" ]] && git -C "$SCRIPT_DIR" remote get-url origin >/dev/null 2>&1; then
+        git -C "$SCRIPT_DIR" remote set-url origin git@github.com:Kei18/dotfiles.git
+    fi
+}
+
 install_cargo_tools() {
     "$HOME/.cargo/bin/cargo" install --locked \
         zoxide \
@@ -174,6 +180,7 @@ run_step() {
 }
 
 run_step "touch_zshrc_local" touch "$HOME/.zshrc.local"
+run_step "ensure_dotfiles_origin_ssh" ensure_dotfiles_origin_ssh
 run_step "deploy_dotfiles" deploy_dotfiles
 run_step "install_prezto" install_prezto
 run_step "install_tpm" install_tpm
