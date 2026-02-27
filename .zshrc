@@ -92,6 +92,7 @@ alias q='pueue'
 alias qa='pueue add --'
 alias qfl='pueue follow'
 alias qcl='pueue clean'
+alias emacs-kill='emacsclient -e "(kill-emacs)"'
 
 export FZF_TMUX=1
 alias fp="fzf-tmux -p 60%"
@@ -155,13 +156,18 @@ fi
 # additional commands
 export PATH="$HOME/.local/bin:$PATH"
 
+fzf_shell_loaded=0
 if command -v mise >/dev/null 2>&1; then
     eval "$(mise activate zsh)"
     fzf_dir="$(mise where fzf 2>/dev/null || true)"
     if [[ -n "$fzf_dir" ]]; then
-        [ -f "$fzf_dir/shell/completion.zsh" ] && source "$fzf_dir/shell/completion.zsh"
-        [ -f "$fzf_dir/shell/key-bindings.zsh" ] && source "$fzf_dir/shell/key-bindings.zsh"
+        [ -f "$fzf_dir/shell/completion.zsh" ] && source "$fzf_dir/shell/completion.zsh" && fzf_shell_loaded=1
+        [ -f "$fzf_dir/shell/key-bindings.zsh" ] && source "$fzf_dir/shell/key-bindings.zsh" && fzf_shell_loaded=1
     fi
+fi
+if [[ "$fzf_shell_loaded" == "0" ]]; then
+    [ -f "$HOME/.local/share/fzf/shell/completion.zsh" ] && source "$HOME/.local/share/fzf/shell/completion.zsh"
+    [ -f "$HOME/.local/share/fzf/shell/key-bindings.zsh" ] && source "$HOME/.local/share/fzf/shell/key-bindings.zsh"
 fi
 
 eval "$(zoxide init zsh)"
