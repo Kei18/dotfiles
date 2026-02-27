@@ -139,6 +139,39 @@ install_os_packages() {
     fi
 }
 
+install_figlet() {
+    if command -v figlet >/dev/null 2>&1; then
+        return 0
+    fi
+
+    if is_macos; then
+        ensure_brew
+        brew install figlet
+        return
+    fi
+
+    if is_linux && command -v apt-get >/dev/null 2>&1; then
+        if [[ "$(id -u)" == "0" ]]; then
+            apt-get update -y
+            apt-get install -y figlet
+            return
+        fi
+
+        if command -v sudo >/dev/null 2>&1; then
+            sudo apt-get update -y
+            sudo apt-get install -y figlet
+            return
+        fi
+    fi
+
+    if command -v brew >/dev/null 2>&1; then
+        brew install figlet
+        return
+    fi
+
+    echo "warning: figlet is missing and no supported package manager was found." >&2
+}
+
 install_fzf() {
     "$HOME/.local/bin/mise" install fzf@latest
     "$HOME/.local/bin/mise" use -g fzf@latest
@@ -202,6 +235,7 @@ run_step "install_codex" install_codex
 run_step "install_cargo_tools" install_cargo_tools
 run_step "install_yazi" install_yazi
 run_step "install_os_packages" install_os_packages
+run_step "install_figlet" install_figlet
 run_step "install_fzf" install_fzf
 run_step "install_zsh_autosuggestions" install_zsh_autosuggestions
 run_step "install_spacemacs" install_spacemacs
